@@ -1,5 +1,3 @@
-import 'package:fitpall/login_screen.dart';
-import 'package:fitpall/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
