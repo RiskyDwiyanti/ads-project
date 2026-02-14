@@ -128,7 +128,7 @@ class SigninView extends GetView<SigninController> {
                                   ),
                                   onPressed: controller.login,
                                   child: Text('Sign In',
-                                    style: AppText.Subheading_Bold,
+                                    style: AppText.Subheading_Bold2,
                                   ),
                                 ),
                               ),

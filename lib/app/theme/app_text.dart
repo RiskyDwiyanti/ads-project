@@ -21,6 +21,12 @@ class AppText {
     color: AppColors.black,
   );
 
+  static TextStyle Subheading_Bold2 = GoogleFonts.poppins(
+    fontSize: 18,
+    fontWeight: FontWeight.w600,
+    color: AppColors.white,
+  );
+
   static TextStyle Subheading = GoogleFonts.poppins(
     fontSize: 18,
     fontWeight: FontWeight.w400,

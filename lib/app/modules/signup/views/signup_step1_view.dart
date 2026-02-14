@@ -84,7 +84,7 @@ class SignUpStep1View extends GetView<SignupController> {
                       borderRadius: BorderRadius.circular(24),
                       child: BackdropFilter(
                         filter: ImageFilter.blur(
-                          sigmaX: 10, 
+                          sigmaX: 9, 
                           sigmaY: 10
                         ),
                         child: Container(
@@ -137,7 +137,7 @@ class SignUpStep1View extends GetView<SignupController> {
                               _label('Gender'),
                               Obx(() => DropdownButtonFormField<String>(
                                 value: controller.gender.value,
-                                dropdownColor: Colors.black,
+                                dropdownColor: Colors.white,
                                 items: const [
                                   DropdownMenuItem(value: 'Male', child: Text('Male')),
                                   DropdownMenuItem(value: 'Female', child: Text('Female')),

@@ -92,10 +92,10 @@ class SignUpStep2View extends GetView<SignupController> {
                           padding: const EdgeInsets.all(24),
                           margin: const EdgeInsets.only(top: 32),
                           decoration: BoxDecoration(
-                            color: Colors.black.withOpacity(0.01),
+                            color: Colors.white.withOpacity(0.01),
                             borderRadius: BorderRadius.circular(24),
                             border: Border.all(
-                              color: Colors.black.withOpacity(0.3),
+                              color: Colors.white.withOpacity(0.3),
                             ),
                           ),
                           child: Column(
