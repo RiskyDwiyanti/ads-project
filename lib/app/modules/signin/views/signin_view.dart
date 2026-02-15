@@ -41,11 +41,11 @@ class SigninView extends GetView<SigninController> {
           children: [
             // Background 
             Positioned(
-              top: 100,
+              top: 80,
               left: 0,
               child: Image.asset(
                 'assets/image/Shape (1).png',
-                width: 250,
+                width: 290,
                 opacity: const AlwaysStoppedAnimation(1.0),
               )
             ),
@@ -67,7 +67,7 @@ class SigninView extends GetView<SigninController> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const SizedBox(height: 40),
+                    const SizedBox(height: 16),
 
                     Text(
                       'Welcome back!',
@@ -78,13 +78,15 @@ class SigninView extends GetView<SigninController> {
                       'It’s great to see you again.',
                       style: AppText.Subheading,
                     ),
+
+                    const SizedBox(height: 16),
                     
                     // Blur area
                     ClipRRect(
                       borderRadius: BorderRadius.circular(24),
                       child: BackdropFilter(
                         filter: ImageFilter.blur(
-                          sigmaX: 10, 
+                          sigmaX: 9, 
                           sigmaY: 10
                         ),
                         child: Container(
@@ -92,10 +94,10 @@ class SigninView extends GetView<SigninController> {
                           padding: const EdgeInsets.all(24),
                           margin: const EdgeInsets.only(top: 32),
                           decoration: BoxDecoration(
-                            color: Colors.black.withOpacity(0.01),
+                            color: Colors.white.withOpacity(0.40),
                             borderRadius: BorderRadius.circular(24),
                             border: Border.all(
-                              color: Colors.black.withOpacity(0.3),
+                              color: Colors.white.withOpacity(0.3),
                             ),
                           ),
                           child: Column(
@@ -190,7 +192,7 @@ Widget _label(String text) => Padding(
 Widget _input(TextEditingController controller, String hint) {
   return TextField(
     controller: controller,
-    style: const TextStyle(color: Colors.white),
+    style: const TextStyle(color: Colors.black),
     decoration: _decoration(hint: hint),
     keyboardType: TextInputType.text,
   );
@@ -216,14 +218,14 @@ Widget _password(TextEditingController controller, bool obscure, VoidCallback to
 InputDecoration _decoration({String? hint}) {
   return InputDecoration(
     hintText: hint,
-    hintStyle: const TextStyle(color: Colors.black38),
+    hintStyle: AppText.Body_hint,
     contentPadding: const EdgeInsets.symmetric(
-      horizontal: 20,
+      horizontal: 18,
       vertical: 14,
     ),
     enabledBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(28),
-      borderSide: const BorderSide(color: Colors.black54),
+      borderSide: const BorderSide(color: Colors.black),
     ),
     focusedBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(24),

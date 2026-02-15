@@ -45,6 +45,12 @@ class AppText {
     color: AppColors.black,
   );
 
+  static TextStyle Body_hint = GoogleFonts.poppins(
+    fontSize: 15,
+    fontWeight: FontWeight.w400,
+    color: Color(0xFF6C6C6C),
+  );
+
   static TextStyle Body2_bold = GoogleFonts.poppins(
     fontSize: 12,
     fontWeight: FontWeight.w600,

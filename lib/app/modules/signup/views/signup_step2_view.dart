@@ -67,7 +67,7 @@ class SignUpStep2View extends GetView<SignupController> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const SizedBox(height: 40),
+                    const SizedBox(height: 16),
 
                     Text(
                       'Hey there!',
@@ -75,16 +75,18 @@ class SignUpStep2View extends GetView<SignupController> {
                     ),
                     const SizedBox(height: 16),
                     Text(
-                      'Welcome to Fitpal!',
+                      'Welcome to Juliete!',
                       style: AppText.Subheading,
                     ),
+
+                    const SizedBox(height: 16,),
                     
                     // Blur area
                     ClipRRect(
                       borderRadius: BorderRadius.circular(24),
                       child: BackdropFilter(
                         filter: ImageFilter.blur(
-                          sigmaX: 10, 
+                          sigmaX: 9, 
                           sigmaY: 10
                         ),
                         child: Container(
@@ -92,7 +94,7 @@ class SignUpStep2View extends GetView<SignupController> {
                           padding: const EdgeInsets.all(24),
                           margin: const EdgeInsets.only(top: 32),
                           decoration: BoxDecoration(
-                            color: Colors.white.withOpacity(0.01),
+                            color: Colors.white.withOpacity(0.35),
                             borderRadius: BorderRadius.circular(24),
                             border: Border.all(
                               color: Colors.white.withOpacity(0.3),
@@ -103,16 +105,18 @@ class SignUpStep2View extends GetView<SignupController> {
                             children: [
                               const SizedBox(height: 8),
 
-                              _label('Username'),
-                              _input(controller.usernameC, ''),
-
-                              _label('E-mail'),
+                              _label('E-Mail'),
                               _input(controller.emailC, 'hey@gmail.com'),
 
                               const SizedBox(height: 8),
 
                               _label('Phone Number'),
                               _input(controller.phoneC, '0812-3456-789'),
+
+                              const SizedBox(height: 8),
+
+                              _label('Username'),
+                              _input(controller.usernameC, 'username'),
 
                               const SizedBox(height: 16),
 
@@ -134,7 +138,7 @@ class SignUpStep2View extends GetView<SignupController> {
 
                               SizedBox(
                                 width: double.infinity,
-                                height: 46,
+                                height: 52,
                                 child: ElevatedButton(
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: AppColors.primary,
@@ -237,14 +241,14 @@ Widget _input(TextEditingController controller, String hint) {
 InputDecoration _decoration({String? hint}) {
   return InputDecoration(
     hintText: hint,
-    hintStyle: const TextStyle(color: Colors.black38),
+    hintStyle: AppText.Body_hint,
     contentPadding: const EdgeInsets.symmetric(
-      horizontal: 20,
+      horizontal: 18,
       vertical: 14,
     ),
     enabledBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(28),
-      borderSide: const BorderSide(color: Colors.black54),
+      borderSide: const BorderSide(color: Colors.black),
     ),
     focusedBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(24),

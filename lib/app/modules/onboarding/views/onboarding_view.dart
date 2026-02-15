@@ -35,7 +35,7 @@ class OnboardingView extends GetView<OnboardingController> {
                 height: 265,
                 child: ClipRRect(
                   child: BackdropFilter(
-                    filter: ImageFilter.blur(sigmaX: 12, sigmaY: 12),
+                    filter: ImageFilter.blur(sigmaX: 10, sigmaY: 9),
                     child: Container(
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
@@ -59,13 +59,17 @@ class OnboardingView extends GetView<OnboardingController> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      data.title,
-                      style: GoogleFonts.unbounded (
-                        color: Colors.white,
-                        fontSize: 24,
-                        fontWeight: FontWeight.w500,
-                      ),
+                    RichText(
+                      text: TextSpan(
+                        children: controller.buildTextSpans(
+                          data.title, 
+                          GoogleFonts.unbounded(
+                            color: AppColors.white,
+                            fontSize: 24,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ), 
                     ),
                     const SizedBox(height: 12),
                     Text(
@@ -216,7 +220,7 @@ class _GetStartedButton extends StatelessWidget {
         backgroundColor: AppColors.primary,
         elevation: 0,
         padding:
-            const EdgeInsets.symmetric(horizontal: 28, vertical: 20),
+            const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30),
         ),

@@ -1,4 +1,5 @@
 import 'package:fitpall/app/data/models/onboarding_model.dart';
+import 'package:fitpall/app/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -10,21 +11,55 @@ class OnboardingController extends GetxController {
   // data untuk 3 halaman onboarding
   List<OnboardingModel> onboardingPages = [
     OnboardingModel(
-      image: 'image/onboarding1.jpg',
-      title: 'Welcome to FitPal!',
+      image: 'image/onboarding.png',
+      title: 'Welcome to Juliete!',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi.',
     ),
     OnboardingModel(
       image: 'image/onboarding3.jpg',
-      title: 'Discover your Fitness Adventure',
+      title: 'Explore competitions around your area',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi.',
     ),
-    // OnboardingModel(
-    //   image: 'image/onboarding3.jpg',
-    //   title: 'Your Fitness Story starts here!',
-    //   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi.',
-    // ),
   ];
+
+  final List<String> highlightWords = [
+    'Juliete',
+    'competitions',
+  ];
+
+  // Function buat convert text ke TextSpan
+  List<TextSpan> buildTextSpans(
+    String text,
+    TextStyle baseStyle,
+  ) {
+    final List<TextSpan> spans = [];
+
+    final words = text.split(' ');
+
+    for (var word in words) {
+      final cleanWord = word.replaceAll(RegExp(r'[^\w]'), '');
+
+      final isHighlight = highlightWords.any(
+        (h) => h.toLowerCase() == cleanWord.toLowerCase(),
+      );
+
+      spans.add(
+        TextSpan(
+          text: '$word ',
+          style: isHighlight
+              ? baseStyle.copyWith(
+                  decoration: TextDecoration.underline,
+                  decorationColor: AppColors.primary,
+                  decorationThickness: 3,
+                  height: 1.4,
+                )
+              : baseStyle,
+        ),
+      );
+    }
+
+    return spans;
+  }
 
   void nextPage() {
     if (currentIndex.value < onboardingPages.length - 1) {
