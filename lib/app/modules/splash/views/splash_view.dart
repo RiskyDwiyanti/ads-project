@@ -29,7 +29,7 @@ class SplashView extends GetView<SplashController> {
 
                   // LOGO (DIAM)
                   SvgPicture.asset(
-                    'assets/icons/logo.svg',
+                    'assets/image/logo.svg',
                     width: 50,
                     height: 50,
                   ),

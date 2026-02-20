@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:fitpall/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
@@ -55,7 +56,7 @@ class SigninController extends GetxController {
         await prefs.setString('user', jsonEncode(data['user']));
 
         Get.snackbar('Success', 'Login success');
-        Get.offAllNamed('/home');
+        Get.offAllNamed(Routes.MAIN);
       } else {
         Get.snackbar(
           'Error',
