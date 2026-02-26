@@ -13,6 +13,7 @@ abstract class Routes {
   static const MAIN = _Paths.MAIN;
   static const TRANSACTION = _Paths.TRANSACTION;
   static const PROFILE = _Paths.PROFILE;
+  static const CLASS_DETAIL = _Paths.CLASS_DETAIL;
 }
 
 abstract class _Paths {
@@ -27,4 +28,5 @@ abstract class _Paths {
   static const MAIN = '/main';
   static const TRANSACTION = '/transaction';
   static const PROFILE = '/profile';
+  static const CLASS_DETAIL = '/class-detail';
 }

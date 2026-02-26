@@ -32,24 +32,69 @@ class HomeController extends GetxController {
     },
   ];
 
+  // ==================== LOCATION ====================
+  var selectedLocationId = '1'.obs;
+
+  // Daftar lokasi gym — sesuaikan dengan data asli kamu
+  final locations = [
+    {
+      'id': '1',
+      'name': 'GymFit Malang',
+      'city': 'Malang',
+      'distance': '6km',
+      'image': 'image/gym1.png',
+    },
+    {
+      'id': '2',
+      'name': 'GymFit Malang',
+      'city': 'Malang',
+      'distance': '6km',
+      'image': 'image/gym1.png',
+    },
+    {
+      'id': '3',
+      'name': 'GymFit Malang',
+      'city': 'Malang',
+      'distance': '6km',
+      'image': 'image/gym1.png',
+    },
+    {
+      'id': '4',
+      'name': 'GymFit Malang',
+      'city': 'Malang',
+      'distance': '6km',
+      'image': 'image/gym1.png',
+    },
+  ];
+
+  void selectLocation(String id) {
+    selectedLocationId.value = id;
+  }
+
   List<Map<String, dynamic>> get featuredClasses => [
     {
       'image': 'assets/image/bg_section.png',
       'title': 'Men\'s Sport Physique',
       'date': '27 Jan',
       'gender': 'Male',
+      'price': 500000,
+      'time': '09:00',
     },
     {
       'image': 'assets/image/bg_section.png',
       'title': 'Men\'s Sport Physique',
       'date': '27 Jan',
       'gender': 'Male',
+      'price': 500000,
+      'time': '10:00',
     },
     {
       'image': 'assets/image/bg_section.png',
       'title': 'Men\'s Sport Physique',
       'date': '27 Jan',
       'gender': 'Female',
+      'price': 500000,
+      'time': '11:00',
     },
   ];
 
