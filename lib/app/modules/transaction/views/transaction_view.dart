@@ -50,7 +50,7 @@ class TransactionView extends GetView<TransactionController> {
                         const SizedBox(height: 12),
                         Text(
                           'No transactions found',
-                          style: AppText.Body.copyWith(color: Colors.grey),
+                          style: AppText.Body.copyWith(color: AppColors.grey),
                         ),
                       ],
                     ),
@@ -122,7 +122,7 @@ class TransactionView extends GetView<TransactionController> {
                   color: isSelected ? AppColors.secondary : AppColors.white,
                   borderRadius: BorderRadius.circular(5),
                   border: Border.all(
-                    color: isSelected ? AppColors.secondary : const Color(0xFF6C6C6C),
+                    color: isSelected ? AppColors.secondary : AppColors.grey,
                     width: 1,
                   ),
                 ),
@@ -147,16 +147,16 @@ class TransactionView extends GetView<TransactionController> {
     Color statusColor;
     switch (status) {
       case 'Paid':
-        statusColor = AppColors.primary;
+        statusColor = AppColors.secondary;
         break;
       case 'Canceled':
-        statusColor = const Color(0xFFFF3D00);
+        statusColor = AppColors.red;
         break;
       case 'Unpaid':
-        statusColor = const Color(0xFF9E9E9E);
+        statusColor = AppColors.primary;
         break;
       default:
-        statusColor = const Color(0xFF9E9E9E);
+        statusColor = AppColors.grey;
     }
 
     return Column(
@@ -198,7 +198,7 @@ class TransactionView extends GetView<TransactionController> {
                     const SizedBox(height: 2),
                     Text(
                       tx['price'],
-                      style: AppText.Body.copyWith(color: const Color(0xFF6C6C6C)),
+                      style: AppText.Body.copyWith(color: AppColors.grey),
                     ),
                   ],
                 ),
