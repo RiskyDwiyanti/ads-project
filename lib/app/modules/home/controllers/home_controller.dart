@@ -73,7 +73,7 @@ class HomeController extends GetxController {
 
   List<Map<String, dynamic>> get featuredClasses => [
     {
-      'image': 'assets/image/bg_section.png',
+      'image': 'image/class1.png',
       'title': 'Men\'s Sport Physique',
       'date': '27 Jan',
       'gender': 'Male',
@@ -81,15 +81,15 @@ class HomeController extends GetxController {
       'time': '09:00',
     },
     {
-      'image': 'assets/image/bg_section.png',
-      'title': 'Men\'s Sport Physique',
-      'date': '27 Jan',
+      'image': 'image/class2.png',
+      'title': 'Master Over 45th Years',
+      'date': '28 Jan',
       'gender': 'Male',
       'price': 500000,
       'time': '10:00',
     },
     {
-      'image': 'assets/image/bg_section.png',
+      'image': 'image/class1.png',
       'title': 'Men\'s Sport Physique',
       'date': '27 Jan',
       'gender': 'Female',

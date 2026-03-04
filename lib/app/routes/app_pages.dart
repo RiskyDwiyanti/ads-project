@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 
 import '../modules/class_detail/bindings/class_detail_binding.dart';
 import '../modules/class_detail/views/class_detail_view.dart';
+import '../modules/class_list/bindings/class_list_binding.dart';
+import '../modules/class_list/views/class_list_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/main/bindings/main_binding.dart';
@@ -77,6 +79,11 @@ class AppPages {
       name: _Paths.CLASS_DETAIL,
       page: () => const ClassDetailView(),
       binding: ClassDetailBinding(),
+    ),
+    GetPage(
+      name: _Paths.CLASS_LIST,
+      page: () => const ClassListView(),
+      binding: ClassListBinding(),
     ),
   ];
 }

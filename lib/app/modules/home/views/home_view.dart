@@ -225,7 +225,7 @@ class HomeView extends GetView<HomeController> {
                   Text('Featured Classes', style: AppText.Heading2),
                   const SizedBox(height: 4),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () => Get.toNamed(Routes.CLASS_LIST),
                     child: Text(
                       'See All',
                       style: AppText.Body_bold.copyWith(color: const Color(0xFFFE8400)),
@@ -337,8 +337,22 @@ class HomeView extends GetView<HomeController> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(gender, style: GoogleFonts.poppins(color: Colors.white, fontSize: 15, fontWeight: FontWeight.w400)),
-                      Text(date, style: GoogleFonts.poppins(color: Colors.white, fontSize: 15, fontWeight: FontWeight.w600)),
+                      Text(
+                        gender, 
+                        style: GoogleFonts.poppins(
+                          color: Colors.white, 
+                          fontSize: 15, 
+                          fontWeight: FontWeight.w400
+                        )
+                      ),
+                      Text(
+                        date, 
+                        style: GoogleFonts.poppins(
+                          color: Colors.white, 
+                          fontSize: 15, 
+                          fontWeight: FontWeight.w600
+                        )
+                      ),
                     ],
                   ),
                   const Spacer(),
@@ -347,7 +361,12 @@ class HomeView extends GetView<HomeController> {
                       Expanded(
                         child: Text(
                           title,
-                          style: GoogleFonts.poppins(color: Colors.white, fontSize: 20, fontWeight: FontWeight.w600, height: 1.2),
+                          style: GoogleFonts.poppins(
+                            color: Colors.white, 
+                            fontSize: 20, 
+                            fontWeight: FontWeight.w600, 
+                            height: 1.2
+                          ),
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                         ),
