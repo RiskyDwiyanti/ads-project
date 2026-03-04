@@ -18,7 +18,7 @@ class ClassListView extends GetView<ClassListController> {
           children: [
             // ==================== HEADER ====================
             Padding(
-              padding: const EdgeInsets.fromLTRB(20, 32, 20, 32),
+              padding: const EdgeInsets.fromLTRB(20, 62, 20, 20),
               child: Row(
                 children: [
                   // Back button
@@ -274,7 +274,7 @@ class ClassListView extends GetView<ClassListController> {
 
                   // Book button
                   GestureDetector(
-                    onTap: () => controller.onBookTap(classItem['id']!),
+                    onTap: () {},
                     child: Container(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 20, vertical: 10),

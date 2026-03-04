@@ -55,7 +55,6 @@ class SigninController extends GetxController {
         await prefs.setString('token', data['token']);
         await prefs.setString('user', jsonEncode(data['user']));
 
-        Get.snackbar('Success', 'Login success');
         Get.offAllNamed(Routes.MAIN);
       } else {
         Get.snackbar(

@@ -46,13 +46,6 @@ class ClassListController extends GetxController {
         .toList();
   }
 
-  void onBookTap(String classId) {
-    // Cari data class berdasarkan id
-    final classItem = allClasses.firstWhere((c) => c['id'] == classId);
-    // TODO: navigasi ke halaman booking
-    // Get.toNamed(Routes.BOOKING, arguments: classItem);
-  }
-
   // ✅ Navigasi ke ClassDetailView dengan kirim semua data sebagai arguments
   void onDetailTap(String classId) {
     final classItem = allClasses.firstWhere((c) => c['id'] == classId);

@@ -144,6 +144,7 @@ class ClassDetailView extends GetView<ClassDetailController> {
 
                         // Location Card
                         _buildLocationCard(
+                          image: 'assets/image/gym1.png',
                           location: 'GymFit Malang',
                           locationDetail: 'Malang • 6km',
                         ),
@@ -211,9 +212,9 @@ class ClassDetailView extends GetView<ClassDetailController> {
                             },
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Color(0xFFFE8400),
-                              padding: EdgeInsets.symmetric(vertical: 22, horizontal: 18),
+                              padding: EdgeInsets.symmetric(vertical: 16, horizontal: 18),
                               shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(30),
+                                borderRadius: BorderRadius.circular(35),
                               ),
                               elevation: 0,
                             ),
@@ -292,6 +293,7 @@ class ClassDetailView extends GetView<ClassDetailController> {
   Widget _buildLocationCard({
     required String location,
     required String locationDetail,
+    String? image,
   }) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(20, 16, 20, 0),
@@ -311,7 +313,30 @@ class ClassDetailView extends GetView<ClassDetailController> {
                 color: Colors.grey.shade200,
                 borderRadius: BorderRadius.circular(12),
               ),
-              child: Icon(Icons.location_city, color: Colors.grey.shade400, size: 30),
+              child: image != null 
+                ? ClipRRect(
+                    borderRadius: BorderRadius.circular(12),
+                    child: Image.asset(
+                      image,
+                      fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) {
+                        print('Location image load error: $error');
+                        return Container(
+                          color: Colors.grey.shade200,
+                          child: Icon(
+                            Icons.location_on_outlined,
+                            size: 30,
+                            color: Colors.grey.shade600,
+                          ),
+                        );
+                      },
+                    ),
+                  )
+                : Icon(
+                    Icons.location_on_outlined,
+                    size: 30,
+                    color: Colors.grey.shade600,
+                  ),
             ),
             SizedBox(width: 16),
             Expanded(

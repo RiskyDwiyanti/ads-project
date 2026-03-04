@@ -151,9 +151,15 @@ class HomeView extends GetView<HomeController> {
                 // Actions
                 Row(
                   children: [
-                    _iconBox(Icons.shopping_cart),
+                    GestureDetector(
+                      onTap: () {},
+                      child: _iconBox(Icons.shopping_cart),
+                    ),
                     const SizedBox(width: 16),
-                    _iconBox(Icons.notifications),
+                    GestureDetector(
+                      onTap: () => Get.toNamed(Routes.NOTIFICATION),
+                      child: _iconBox(Icons.notifications),
+                    ),
                   ],
                 ),
               ],
