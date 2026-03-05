@@ -5,27 +5,27 @@ class CartController extends GetxController {
   var selectedIds = <String>{}.obs;
 
   final cartItems = <Map<String, dynamic>>[
-    {
-      'id' : '1',
-      'title' : "Men’s Sport Physique",
-      'price' : 500000,
-      'pricelabel' : 'Rp. 500.000',
-      'image' : 'assets/image/class1.png',
-    },
-    {
-      'id' : '2',
-      'title' : "Men’s Fitness Open",
-      'price' : 300000,
-      'pricelabel' : 'Rp. 300.000',
-      'image' : 'assets/image/class1.png',
-    },
-    {
-      'id' : '3',
-      'title' : "Local Javanese Strength",
-      'price' : 250000,
-      'pricelabel' : 'Rp. 250.000',
-      'image' : 'assets/image/class1.png',
-    },
+    // {
+    //   'id' : '1',
+    //   'title' : "Men’s Sport Physique",
+    //   'price' : 500000,
+    //   'pricelabel' : 'Rp. 500.000',
+    //   'image' : 'assets/image/class1.png',
+    // },
+    // {
+    //   'id' : '2',
+    //   'title' : "Men’s Fitness Open",
+    //   'price' : 300000,
+    //   'pricelabel' : 'Rp. 300.000',
+    //   'image' : 'assets/image/class1.png',
+    // },
+    // {
+    //   'id' : '3',
+    //   'title' : "Local Javanese Strength",
+    //   'price' : 250000,
+    //   'pricelabel' : 'Rp. 250.000',
+    //   'image' : 'assets/image/class1.png',
+    // },
   ].obs;
 
   @override
