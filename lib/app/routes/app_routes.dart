@@ -16,6 +16,7 @@ abstract class Routes {
   static const CLASS_DETAIL = _Paths.CLASS_DETAIL;
   static const CLASS_LIST = _Paths.CLASS_LIST;
   static const NOTIFICATION = _Paths.NOTIFICATION;
+  static const CART = _Paths.CART;
 }
 
 abstract class _Paths {
@@ -33,4 +34,5 @@ abstract class _Paths {
   static const CLASS_DETAIL = '/class-detail';
   static const CLASS_LIST = '/class-list';
   static const NOTIFICATION = '/notification';
+  static const CART = '/cart';
 }

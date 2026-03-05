@@ -152,7 +152,7 @@ class HomeView extends GetView<HomeController> {
                 Row(
                   children: [
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () => Get.toNamed(Routes.CART),
                       child: _iconBox(Icons.shopping_cart),
                     ),
                     const SizedBox(width: 16),
