@@ -1,3 +1,4 @@
+import 'package:fitpall/app/routes/app_pages.dart';
 import 'package:get/get.dart';
 
 class ProfileController extends GetxController {
@@ -69,7 +70,7 @@ class ProfileController extends GetxController {
         // Get.toNamed(Routes.THEME);
         break;
       case 'FAQs':
-        // Get.toNamed(Routes.FAQ);
+        Get.toNamed(Routes.FAQ);
         break;
       case 'Send Feedback':
         // Get.toNamed(Routes.FEEDBACK);
