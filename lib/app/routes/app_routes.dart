@@ -18,6 +18,8 @@ abstract class Routes {
   static const NOTIFICATION = _Paths.NOTIFICATION;
   static const CART = _Paths.CART;
   static const FAQ = _Paths.FAQ;
+  static const CHANGE_PASSWORD = _Paths.CHANGE_PASSWORD;
+  static const RESET_PASSWORD = _Paths.RESET_PASSWORD;
 }
 
 abstract class _Paths {
@@ -37,4 +39,6 @@ abstract class _Paths {
   static const NOTIFICATION = '/notification';
   static const CART = '/cart';
   static const FAQ = '/faq';
+  static const CHANGE_PASSWORD = '/change-password';
+  static const RESET_PASSWORD = '/reset-password';
 }

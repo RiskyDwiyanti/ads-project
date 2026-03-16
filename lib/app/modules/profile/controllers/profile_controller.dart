@@ -58,7 +58,7 @@ class ProfileController extends GetxController {
     // Handle navigasi sesuai menu
     switch (title) {
       case 'Change Password':
-        // Get.toNamed(Routes.CHANGE_PASSWORD);
+        Get.toNamed(Routes.CHANGE_PASSWORD);
         break;
       case 'Account Options':
         // Get.toNamed(Routes.ACCOUNT_OPTIONS);
