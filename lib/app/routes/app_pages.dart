@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import '../modules/account_options/bindings/account_options_binding.dart';
+import '../modules/account_options/views/account_options_view.dart';
 import '../modules/cart/bindings/cart_binding.dart';
 import '../modules/cart/views/cart_view.dart';
 import '../modules/change_password/bindings/change_password_binding.dart';
@@ -119,6 +121,11 @@ class AppPages {
       name: _Paths.RESET_PASSWORD,
       page: () => const ResetPasswordView(),
       binding: ResetPasswordBinding(),
+    ),
+    GetPage(
+      name: _Paths.ACCOUNT_OPTIONS,
+      page: () => const AccountOptionsView(),
+      binding: AccountOptionsBinding(),
     ),
   ];
 }

@@ -61,7 +61,7 @@ class ProfileController extends GetxController {
         Get.toNamed(Routes.CHANGE_PASSWORD);
         break;
       case 'Account Options':
-        // Get.toNamed(Routes.ACCOUNT_OPTIONS);
+        Get.toNamed(Routes.ACCOUNT_OPTIONS);
         break;
       case 'Change Language':
         // Get.toNamed(Routes.LANGUAGE);
