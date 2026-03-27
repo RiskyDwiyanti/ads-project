@@ -31,6 +31,8 @@ import '../modules/signup/views/signup_step1_view.dart';
 import '../modules/signup/views/signup_step2_view.dart';
 import '../modules/splash/bindings/splash_binding.dart';
 import '../modules/splash/views/splash_view.dart';
+import '../modules/switch_theme/bindings/switch_theme_binding.dart';
+import '../modules/switch_theme/views/switch_theme_view.dart';
 import '../modules/transaction/bindings/transaction_binding.dart';
 import '../modules/transaction/views/transaction_view.dart';
 
@@ -126,6 +128,11 @@ class AppPages {
       name: _Paths.ACCOUNT_OPTIONS,
       page: () => const AccountOptionsView(),
       binding: AccountOptionsBinding(),
+    ),
+    GetPage(
+      name: _Paths.SWITCH_THEME,
+      page: () => const SwitchThemeView(),
+      binding: SwitchThemeBinding(),
     ),
   ];
 }

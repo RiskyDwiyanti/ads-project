@@ -1,6 +1,8 @@
+import 'package:fitpall/app/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'app/routes/app_pages.dart';
 
@@ -21,31 +23,33 @@ void main() async {
   runApp(const MyApp());
 }
 
-// class MyApp extends StatelessWidget {
-//   const MyApp({Key? key}) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       debugShowCheckedModeBanner: false,
-//       home: const LoginScreen(),
-//     );
-//   }
-  
-// }
-
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final box = GetStorage();
+    final savedTheme = box.read<String>('app_theme' ?? 'light');
+
+    ThemeMode themeMode;
+
+    switch (savedTheme) {
+      case 'dark':
+        themeMode = ThemeMode.dark;
+        break;
+      case 'system':
+        themeMode = ThemeMode.system;
+        break;
+      default:
+        themeMode = ThemeMode.light;
+    }
+
     return GetMaterialApp(
       title: 'Fitpal',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        useMaterial3: true,
-      ),
+      theme: AppTheme.light,
+      darkTheme: AppTheme.dark,
+      themeMode: themeMode,
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
     );

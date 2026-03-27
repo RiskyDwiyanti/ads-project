@@ -67,7 +67,7 @@ class ProfileController extends GetxController {
         // Get.toNamed(Routes.LANGUAGE);
         break;
       case 'Switch Theme':
-        // Get.toNamed(Routes.THEME);
+        Get.toNamed(Routes.SWITCH_THEME);
         break;
       case 'FAQs':
         Get.toNamed(Routes.FAQ);
