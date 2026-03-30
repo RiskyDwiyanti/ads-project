@@ -26,7 +26,7 @@ class JudgeDetailDialog extends StatelessWidget {
             child: Container(
               constraints: const BoxConstraints(maxWidth: 330),
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: Theme.of(context).colorScheme.background,
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Column(
@@ -38,7 +38,7 @@ class JudgeDetailDialog extends StatelessWidget {
                     width: 330,
                     padding: const EdgeInsets.fromLTRB(16, 16, 16, 16),
                     decoration: BoxDecoration(
-                      color: AppColors.white,
+                      color: Theme.of(context).colorScheme.background,
                       borderRadius: BorderRadius.all(Radius.circular(20)),
                     ),
                     child: ClipRRect(
@@ -47,13 +47,13 @@ class JudgeDetailDialog extends StatelessWidget {
                         children: [
                           // Image
                           Positioned.fill(
-                            child: image != null
+                            child: image.isNotEmpty
                               ? Image.asset(
                                   image,
                                   fit: BoxFit.cover,
                                   errorBuilder: (context, error, stackTrace) {
                                     return Container(
-                                      color: Colors.grey.shade900,
+                                      color: Theme.of(context).colorScheme.background,
                                       child: Icon(
                                         Icons.person,
                                         size: 100,
@@ -85,6 +85,7 @@ class JudgeDetailDialog extends StatelessWidget {
                         Text(
                           name,
                           style: AppText.Heading2.copyWith(
+                            color: Theme.of(context).colorScheme.onBackground,
                             decoration: TextDecoration.underline,
                             decorationColor: AppColors.primary,
                             decorationThickness: 3,
@@ -93,12 +94,12 @@ class JudgeDetailDialog extends StatelessWidget {
                         const SizedBox(height: 8),
                         Text(
                           description,
-                          style: AppText.Body
+                          style: AppText.Body.copyWith(color: Theme.of(context).colorScheme.onBackground)
                         ),
                         const SizedBox(height: 4),
                         Text(
                           description,
-                          style: AppText.Body
+                          style: AppText.Body.copyWith(color: Theme.of(context).colorScheme.onBackground)
                         ),
                       ],
                     ),

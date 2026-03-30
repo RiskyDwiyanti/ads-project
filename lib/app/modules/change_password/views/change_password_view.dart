@@ -11,7 +11,7 @@ class ChangePasswordView extends GetView<ChangePasswordController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -23,14 +23,14 @@ class ChangePasswordView extends GetView<ChangePasswordController> {
                 children: [
                   GestureDetector(
                     onTap: () => Get.back(),
-                    child: const Icon(
+                    child: Icon(
                       Icons.arrow_back,
                       size: 24,
-                      color: Color(0xFF1A1A1A),
+                      color: Theme.of(context).colorScheme.onBackground,
                     ),
                   ),
                   const SizedBox(width: 16),
-                  Text('Change Password', style: AppText.Heading2),
+                  Text('Change Password', style: AppText.Heading2.copyWith(color: Theme.of(context).colorScheme.onBackground)),
                 ],
               ),
             ),
@@ -43,44 +43,47 @@ class ChangePasswordView extends GetView<ChangePasswordController> {
               child: Container(
                 padding: const EdgeInsets.fromLTRB(20, 32, 20, 32),
                 decoration: BoxDecoration(
-                  color: AppColors.white,
+                  color: Theme.of(context).cardColor,
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     // Current Password
-                    Text('Current password', style: AppText.Body_bold,),
+                    Text('Current password', style: AppText.Body_bold.copyWith(color: Theme.of(context).colorScheme.onBackground)),
                     const SizedBox(height: 12,),
                     Obx(() => _buildPasswordField(
                       controller: controller.currentPasswordController,
                       hint: '••••••',
                       isVisible: controller.isCurrentPasswordVisible.value,
                       onToggle: controller.toggleCurrentPassword,
+                      context: context,
                     )),
 
                     const SizedBox(height: 20,),
 
                     // New Password
-                    Text('New password', style: AppText.Body_bold,),
+                    Text('New password', style: AppText.Body_bold.copyWith(color: Theme.of(context).colorScheme.onBackground)),
                     const SizedBox(height: 12,),
                     Obx(() => _buildPasswordField(
                       controller: controller.newPasswordController,
                       hint: 'At least 6 characters',
                       isVisible: controller.isNewPasswordVisible.value,
                       onToggle: controller.toggleNewPassword,
+                      context: context,
                     )),
 
                     const SizedBox(height: 20,),
 
                     // Confirm Password
-                    Text('Confirm password', style: AppText.Body_bold,),
+                    Text('Confirm password', style: AppText.Body_bold.copyWith(color: Theme.of(context).colorScheme.onBackground)),
                     const SizedBox(height: 12,),
                     Obx(() => _buildPasswordField(
                       controller: controller.confirmPasswordController,
                       hint: 'At least 6 characters',
                       isVisible: controller.isConfirmPasswordVisible.value,
                       onToggle: controller.toggleConfirmPassword,
+                      context: context,
                     )),
 
                     const SizedBox(height: 32,),
@@ -124,7 +127,7 @@ class ChangePasswordView extends GetView<ChangePasswordController> {
                             children: [
                               TextSpan(
                                 text: 'Forgot your password? ',
-                                style: AppText.Body,
+                                style: AppText.Body.copyWith(color: Theme.of(context).colorScheme.onBackground),
                               ),
 
                               TextSpan(
@@ -154,23 +157,24 @@ class ChangePasswordView extends GetView<ChangePasswordController> {
     required String hint,
     required bool isVisible,
     required VoidCallback onToggle,
+    required BuildContext context,
   }) {
     return TextField(
       controller: controller,
       obscureText: !isVisible,
-      style: AppText.Body,
+      style: AppText.Body.copyWith(color: Theme.of(context).colorScheme.onBackground),
       decoration: InputDecoration(
         hintText: hint,
-        hintStyle: AppText.Body.copyWith(color: AppColors.grey),
+        hintStyle: AppText.Body.copyWith(color: Theme.of(context).colorScheme.onTertiary),
         contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 14),
         filled: false,
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(30),
-          borderSide: BorderSide(color: AppColors.black, width: 1),
+          borderSide: BorderSide(color: Theme.of(context).colorScheme.onBackground, width: 1),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(30),
-          borderSide: BorderSide(color: AppColors.black, width: 1),
+          borderSide: BorderSide(color: Theme.of(context).colorScheme.onBackground, width: 1),
         ),
         suffixIcon: GestureDetector(
           onTap: onToggle,
@@ -180,7 +184,7 @@ class ChangePasswordView extends GetView<ChangePasswordController> {
               isVisible
                 ? Icons.visibility_outlined
                 : Icons.visibility_off_outlined,
-              color: AppColors.black,
+              color: Theme.of(context).colorScheme.onBackground,
               size: 22,
             ),
           ),

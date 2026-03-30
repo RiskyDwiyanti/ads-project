@@ -1,4 +1,3 @@
-import 'package:fitpall/app/theme/app_colors.dart';
 import 'package:fitpall/app/theme/app_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -12,7 +11,7 @@ class FaqView extends GetView<FaqController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -24,14 +23,14 @@ class FaqView extends GetView<FaqController> {
                 children: [
                   GestureDetector(
                     onTap: () => Get.back(),
-                    child: const Icon(
+                    child: Icon(
                       Icons.arrow_back,
                       size: 24,
-                      color: Color(0xFF1A1A1A),
+                      color: Theme.of(context).colorScheme.onBackground,
                     ),
                   ),
                   const SizedBox(width: 16),
-                  Text('FAQs', style: AppText.Heading2),
+                  Text('FAQs', style: AppText.Heading2.copyWith(color: Theme.of(context).colorScheme.onBackground)),
                   const Spacer(),
                 ],
               ),
@@ -43,7 +42,7 @@ class FaqView extends GetView<FaqController> {
                 padding: EdgeInsets.fromLTRB(20, 10, 20, 20),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: AppColors.white,
+                    color: Theme.of(context).cardColor,
                     borderRadius: BorderRadius.circular(16),
                   ),
                   child: Obx(() => Column(
@@ -55,6 +54,7 @@ class FaqView extends GetView<FaqController> {
                         question: faq['question']!,
                         answer: faq['answer']!,
                         isLast: islast,
+                        context: context,
                       );
                     }) ,
                   )),
@@ -72,6 +72,7 @@ class FaqView extends GetView<FaqController> {
     required String question,
     required String answer,
     required bool isLast,
+    required BuildContext context,
   }) {
     final isOpen = controller.isOpen(index);
 
@@ -93,7 +94,7 @@ class FaqView extends GetView<FaqController> {
                     Expanded(
                       child: Text(
                         question,
-                        style: AppText.Body_bold,
+                        style: AppText.Body_bold.copyWith(color: Theme.of(context).colorScheme.onBackground),
                       ), 
                     ),
                     const SizedBox(width: 12,),
@@ -104,6 +105,7 @@ class FaqView extends GetView<FaqController> {
                         'assets/icons/arrow_icon.svg',
                         height: 6,
                         width: 12,
+                        color: Theme.of(context).colorScheme.onBackground,
                       ),
                     ),
                   ],
@@ -117,7 +119,7 @@ class FaqView extends GetView<FaqController> {
                     padding: const EdgeInsets.only(top: 16),
                     child: Text(
                       answer,
-                      style: AppText.Body,
+                      style: AppText.Body.copyWith(color: Theme.of(context).colorScheme.onBackground),
                     ),
                   ), 
                 ),
@@ -128,10 +130,10 @@ class FaqView extends GetView<FaqController> {
 
         // Divider 
         if (!isLast)
-          const Divider(
+          Divider(
             height: 1,
             thickness: 1,
-            color: AppColors.white,
+            color: Theme.of(context).dividerColor,
           )
       ],
     );

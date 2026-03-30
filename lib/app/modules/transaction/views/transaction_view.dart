@@ -12,7 +12,7 @@ class TransactionView extends GetView<TransactionController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -22,7 +22,9 @@ class TransactionView extends GetView<TransactionController> {
               padding: const EdgeInsets.fromLTRB(20, 52, 20, 20),
               child: Text(
                 'Transaction',
-                style: AppText.Heading1,
+                style: AppText.Heading1.copyWith(
+                  color: Theme.of(context).colorScheme.onBackground,
+                ),
               ),
             ),
 
@@ -31,7 +33,7 @@ class TransactionView extends GetView<TransactionController> {
             // ==================== FILTER ====================
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Obx(() => _buildFilterRow()),
+              child: Obx(() => _buildFilterRow(context)),
             ),
 
             const SizedBox(height: 32),
@@ -72,21 +74,23 @@ class TransactionView extends GetView<TransactionController> {
                           padding: const EdgeInsets.only(bottom: 16),
                           child: Text(
                             date,
-                            style: AppText.Heading2,
+                            style: AppText.Heading2.copyWith(
+                              color: Theme.of(context).colorScheme.onBackground,
+                            ),
                           ),
                         ),
 
                         // Transaction Card (grouped per tanggal)
                         Container(
                           decoration: BoxDecoration(
-                            color: Colors.white,
+                            color: Theme.of(context).cardColor,
                             borderRadius: BorderRadius.circular(16),
                           ),
                           child: Column(
                             children: List.generate(transactions.length, (index) {
                               final tx = transactions[index];
                               final isLast = index == transactions.length - 1;
-                              return _buildTransactionItem(tx, isLast);
+                              return _buildTransactionItem(tx, isLast, context);
                             }),
                           ),
                         ),
@@ -105,7 +109,7 @@ class TransactionView extends GetView<TransactionController> {
   }
 
   // ==================== FILTER ROW ====================
-  Widget _buildFilterRow() {
+  Widget _buildFilterRow(BuildContext context) {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
@@ -119,7 +123,7 @@ class TransactionView extends GetView<TransactionController> {
                 duration: const Duration(milliseconds: 200),
                 padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                 decoration: BoxDecoration(
-                  color: isSelected ? AppColors.secondary : AppColors.white,
+                  color: isSelected ? Theme.of(context).colorScheme.secondary : Theme.of(context).colorScheme.background,
                   borderRadius: BorderRadius.circular(5),
                   border: Border.all(
                     color: isSelected ? AppColors.secondary : AppColors.grey,
@@ -129,7 +133,7 @@ class TransactionView extends GetView<TransactionController> {
                 child: Text(
                   filter,
                   style: AppText.Body.copyWith(
-                    color: isSelected ? AppColors.white : AppColors.black,
+                    color: isSelected ? AppColors.white : Theme.of(context).colorScheme.onBackground,
                   ),
                 ),
               ),
@@ -141,13 +145,13 @@ class TransactionView extends GetView<TransactionController> {
   }
 
   // ==================== TRANSACTION ITEM ====================
-  Widget _buildTransactionItem(Map<String, dynamic> tx, bool isLast) {
+  Widget _buildTransactionItem(Map<String, dynamic> tx, bool isLast, BuildContext context) {
     final status = tx['status'] as String;
 
     Color statusColor;
     switch (status) {
       case 'Paid':
-        statusColor = AppColors.secondary;
+        statusColor = Theme.of(context).colorScheme.secondary;
         break;
       case 'Canceled':
         statusColor = AppColors.red;
@@ -169,16 +173,12 @@ class TransactionView extends GetView<TransactionController> {
               Container(
                 width: 24,
                 height: 24,
-                decoration: BoxDecoration(
-                  color: AppColors.white,
-                  borderRadius: BorderRadius.circular(20),
-                ),
                 child: SvgPicture.asset(
                   'assets/icons/recipt_icon.svg',
                   width: 20,
                   height: 20,
                   colorFilter: ColorFilter.mode(
-                    AppColors.secondary, 
+                    Theme.of(context).colorScheme.onBackground, 
                     BlendMode.srcIn
                   ),
                 ),
@@ -193,12 +193,12 @@ class TransactionView extends GetView<TransactionController> {
                   children: [
                     Text(
                       tx['title'],
-                      style: AppText.Body_bold.copyWith(color: const Color(0xFF1A1A1A)),
+                      style: AppText.Body_bold.copyWith(color: Theme.of(context).colorScheme.onBackground),
                     ),
                     const SizedBox(height: 2),
                     Text(
                       tx['price'],
-                      style: AppText.Body.copyWith(color: AppColors.grey),
+                      style: AppText.Body.copyWith(color: Theme.of(context).colorScheme.onBackground),
                     ),
                   ],
                 ),
@@ -232,10 +232,10 @@ class TransactionView extends GetView<TransactionController> {
 
         // Divider (kecuali item terakhir)
         if (!isLast)
-          const Divider(
+          Divider(
             height: 1,
             thickness: 1,
-            color: Color(0xFFF0F0F0),
+            color: Theme.of(context).dividerColor,
             indent: 16,
             endIndent: 16,
           ),

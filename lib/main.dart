@@ -11,6 +11,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
   await Hive.openBox('signupBox');
+  await GetStorage.init();
 
   // set status bar transparan
   SystemChrome.setSystemUIOverlayStyle(

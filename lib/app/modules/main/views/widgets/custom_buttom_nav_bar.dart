@@ -19,7 +19,7 @@ class CustomButtomNavbar extends GetView<MainController> {
       margin: const EdgeInsets.fromLTRB(20, 0, 20, 24),
       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(20),
         border: Border.all(
           color: Colors.black.withOpacity(0.2), 
@@ -65,7 +65,7 @@ class CustomButtomNavbar extends GetView<MainController> {
                           border: Border.all(
                             color: isSelected
                                 ? const Color(0xFFFE8400)
-                                : const Color(0xFFFFFFFF),
+                                : Theme.of(context).colorScheme.background,
                             width: 1,
                           ),
                         ),
@@ -93,7 +93,7 @@ class CustomButtomNavbar extends GetView<MainController> {
                           colorFilter: ColorFilter.mode(
                             isSelected
                                 ? const Color(0xFFFE8400)
-                                : const Color(0xFF757575),
+                                : Theme.of(context).colorScheme.onTertiary,
                             BlendMode.srcIn,
                           ),
                         ),
@@ -111,7 +111,7 @@ class CustomButtomNavbar extends GetView<MainController> {
                             : FontWeight.w400,
                         color: isSelected
                             ? const Color(0xFFFE8400)
-                            : const Color(0xFF757575),
+                            : Theme.of(context).colorScheme.onTertiary,
                       ),
                     ),
                   ],

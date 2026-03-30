@@ -14,7 +14,7 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -28,8 +28,8 @@ class HomeView extends GetView<HomeController> {
                   right: 0,
                   child: Container(
                     height: 30,
-                    decoration: const BoxDecoration(
-                      color: Colors.white,
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.background,
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(30),
                         topRight: Radius.circular(30),
@@ -42,12 +42,12 @@ class HomeView extends GetView<HomeController> {
 
             // ==================== CONTENT SECTION ====================
             Container(
-              color: Colors.white,
+              color: Theme.of(context).colorScheme.background,
               child: Column(
                 children: [
-                  _buildFeaturedClassesSection(),
+                  _buildFeaturedClassesSection(context),
                   const SizedBox(height: 30),
-                  _buildJudgesSection(),
+                  _buildJudgesSection(context),
                   const SizedBox(height: 160),
                 ],
               ),
@@ -216,7 +216,7 @@ class HomeView extends GetView<HomeController> {
   }
 
   // ==================== FEATURED CLASSES ====================
-  Widget _buildFeaturedClassesSection() {
+  Widget _buildFeaturedClassesSection(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -228,7 +228,7 @@ class HomeView extends GetView<HomeController> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('Featured Classes', style: AppText.Heading2),
+                  Text('Featured Classes', style: AppText.Heading2.copyWith(color: Theme.of(context).colorScheme.onBackground)),
                   const SizedBox(height: 4),
                   TextButton(
                     onPressed: () => Get.toNamed(Routes.CLASS_LIST),
@@ -241,14 +241,14 @@ class HomeView extends GetView<HomeController> {
               ),
               Text(
                 'Join the competition now!',
-                style: AppText.Body.copyWith(color: const Color(0xFF6C6C6C)),
+                style: AppText.Body.copyWith(color: Theme.of(context).colorScheme.onTertiary),
               ),
             ],
           ),
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0),
-          child: Obx(() => _buildGenderFilter()),
+          child: Obx(() => _buildGenderFilter(context)),
         ),
         const SizedBox(height: 20),
         Obx(() => SizedBox(
@@ -274,7 +274,7 @@ class HomeView extends GetView<HomeController> {
     );
   }
 
-  Widget _buildGenderFilter() {
+  Widget _buildGenderFilter(BuildContext context) {
     final genders = ['All', 'Male', 'Female'];
     return Row(
       children: genders.map((gender) {
@@ -286,17 +286,17 @@ class HomeView extends GetView<HomeController> {
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
               decoration: BoxDecoration(
-                color: isSelected ? const Color(0xFF0B0C4F) : Colors.white,
+                color: isSelected ? Theme.of(context).colorScheme.secondary : Theme.of(context).colorScheme.background,
                 borderRadius: BorderRadius.circular(6),
                 border: Border.all(
-                  color: isSelected ? const Color(0xFF0B0C4F) : const Color(0xFF6C6C6C),
+                  color: isSelected ? Theme.of(context).colorScheme.secondary : const Color(0xFF6C6C6C),
                   width: 1.5,
                 ),
               ),
               child: Text(
                 gender,
                 style: AppText.Body.copyWith(
-                  color: isSelected ? Colors.white : const Color(0xFF000000),
+                  color: isSelected ? Colors.white : Theme.of(context).colorScheme.onBackground,
                 ),
               ),
             ),
@@ -413,7 +413,7 @@ class HomeView extends GetView<HomeController> {
   }
 
   // ==================== JUDGES ====================
-  Widget _buildJudgesSection() {
+  Widget _buildJudgesSection(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -422,11 +422,11 @@ class HomeView extends GetView<HomeController> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Meet Our Judges', style: AppText.Heading2),
+              Text('Meet Our Judges', style: AppText.Heading2.copyWith(color: Theme.of(context).colorScheme.onBackground)),
               const SizedBox(height: 4),
               Text(
                 'The true icons of Indonesia\'s bodybuilding',
-                style: AppText.Body.copyWith(color: const Color(0xFF6C6C6C)),
+                style: AppText.Body.copyWith(color: Theme.of(context).colorScheme.onTertiary),
               ),
             ],
           ),

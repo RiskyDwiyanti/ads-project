@@ -12,7 +12,7 @@ class CartView extends GetView<CartController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: SafeArea(
         child: Column(
           children: [
@@ -23,14 +23,14 @@ class CartView extends GetView<CartController> {
                 children: [
                   GestureDetector(
                     onTap: () => Get.back(),
-                    child: const Icon(
+                    child: Icon(
                       Icons.arrow_back,
                       size: 24,
-                      color: Color(0xFF1A1A1A),
+                      color: Theme.of(context).colorScheme.onBackground,
                     ),
                   ),
                   const SizedBox(width: 16),
-                  Text('Cart', style: AppText.Heading2),
+                  Text('Cart', style: AppText.Heading2.copyWith(color: Theme.of(context).colorScheme.onBackground)),
                   const Spacer(),
                   GestureDetector(
                     onTap: () {},
@@ -40,7 +40,7 @@ class CartView extends GetView<CartController> {
                         'assets/icons/trash_icon.svg',
                         height: 26,
                         width: 26,
-                        color: controller.cartItems.isEmpty ? AppColors.grey : AppColors.black,
+                        color: controller.cartItems.isEmpty ? Theme.of(context).colorScheme.onTertiary : Theme.of(context).colorScheme.onBackground,
                       ),
                     ),
                   ),
@@ -51,56 +51,57 @@ class CartView extends GetView<CartController> {
             const SizedBox(height: 20,),
 
             // ========================== CART LIST ========================== 
-            Expanded(
-              child: Obx(() {
-                if (controller.cartItems.isEmpty) {
-                  return Center(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        SvgPicture.asset(
-                          'assets/icons/cart_icon.svg',
-                          height: 62,
-                          width: 65,
-                          color: AppColors.grey,
-                        ),
-                        const SizedBox(height: 12,),
-                        Text('There’s no product in your cart.', style: AppText.Subheading.copyWith(color: AppColors.grey),),
-                      ],
-                    ),
-                  );
-                }
-
-                return Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: AppColors.white,
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                    child: ListView.separated(
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemBuilder: (context, index) {
-                        final item = controller.cartItems[index];
-                        return _buildCartItem(item);
-                      },
-                      separatorBuilder: (_, __) => const Divider(
-                        height: 1,
-                        thickness: 1,
-                        color: Color(0xFFF0F0F0),
-                        indent: 16,
-                        endIndent: 16,
-                      ), 
-                      itemCount: controller.cartItems.length,
-                    ),
+            
+            Obx(() {
+              if (controller.cartItems.isEmpty) {
+                return Center(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      SvgPicture.asset(
+                        'assets/icons/cart_icon.svg',
+                        height: 62,
+                        width: 65,
+                        color: Theme.of(context).colorScheme.onTertiary,
+                      ),
+                      const SizedBox(height: 12,),
+                      Text('There’s no product in your cart.', style: AppText.Subheading.copyWith(color: Theme.of(context).colorScheme.onTertiary),),
+                    ],
                   ),
                 );
-              }),
-            ),
+              }
+
+              return Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).cardColor,
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  child: ListView.separated(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      final item = controller.cartItems[index];
+                      return _buildCartItem(item, context);
+                    },
+                    separatorBuilder: (_, __) => Divider(
+                      height: 1,
+                      thickness: 1,
+                      color: Theme.of(context).dividerColor,
+                      indent: 16,
+                      endIndent: 16,
+                    ), 
+                    itemCount: controller.cartItems.length,
+                  ),
+                ),
+              );
+            }),
+
+            const Spacer(),
 
             // ========================== BOTTOM BAR ========================== 
-            Obx(() => _buildBottomBar()),
+            Obx(() => controller.cartItems.isEmpty ? const SizedBox.shrink() : _buildBottomBar(context)),
           ],
         ),
       ),
@@ -108,7 +109,7 @@ class CartView extends GetView<CartController> {
   }
 
   // ========================== CART ITEM ========================== 
-  Widget _buildCartItem(Map<String, dynamic> item) {
+  Widget _buildCartItem(Map<String, dynamic> item, BuildContext context) {
     return Obx(() {
       final isSelected = controller.isSelected(item['id'] as String);
       
@@ -126,14 +127,14 @@ class CartView extends GetView<CartController> {
                 height: 21,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: isSelected ? AppColors.secondary : Colors.transparent,
+                  color: isSelected ? Theme.of(context).colorScheme.primary : Colors.transparent,
                   border: Border.all(
-                    color: isSelected ? AppColors.secondary : AppColors.black,
+                    color: isSelected ? Theme.of(context).colorScheme.primary : Theme.of(context).colorScheme.onSurface,
                     width: 1,
                   ),
                 ),
                 child: isSelected
-                    ? const Icon(Icons.check, color: Colors.white, size: 14)
+                    ? Icon(Icons.check, color: Theme.of(context).colorScheme.onPrimary, size: 14)
                     : null,
               ),
 
@@ -165,14 +166,14 @@ class CartView extends GetView<CartController> {
                   children: [
                     Text(
                       item['title'] as String,
-                      style: AppText.Body,
+                      style: AppText.Body.copyWith(color: Theme.of(context).colorScheme.onBackground),
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                     ),
                     const SizedBox(height: 6),
                     Text(
                       item['pricelabel'] as String,
-                      style: AppText.Subheading_Bold
+                      style: AppText.Subheading_Bold.copyWith(color: Theme.of(context).colorScheme.onBackground),
                     ),
                   ],
                 ),
@@ -185,24 +186,20 @@ class CartView extends GetView<CartController> {
   }
 
   // // ========================== BOTTOM BAR ========================== 
-  Widget _buildBottomBar() {
+  Widget _buildBottomBar(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.fromLTRB(20, 12, 20, 24),
+      margin: const EdgeInsets.fromLTRB(20, 12, 20, 30),
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(
-          color: AppColors.borderColor,
-          width: 2,
-        )
       ),
       child: Row(
         children: [
           // Total Price
           Text(
             controller.totalPriceLabel,
-            style: AppText.Subheading_Bold
+            style: AppText.Subheading_Bold.copyWith(color: Theme.of(context).colorScheme.onBackground)
           ),
 
           const Spacer(),

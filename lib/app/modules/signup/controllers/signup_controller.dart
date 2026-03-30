@@ -97,7 +97,19 @@ class SignupController extends GetxController {
       if (response.statusCode == 200) {
         print('MASUK SUCCESS BLOCK');
         /// ✔ sukses → hapus local data
-        Hive.box('signupBox').clear();
+        final data = jsonDecode(response.body);
+
+        // ambil token
+        final token = data['token'];
+
+        // simpan token
+        final box = Hive.box('signupBox');
+        await box.put('token', token);
+
+        print("TOKEN SAVED: ${box.get('token')}");
+
+        // hapus signup draft
+        await box.delete('signup_data');
 
         Get.offAllNamed(Routes.SIGNIN);
       } else {

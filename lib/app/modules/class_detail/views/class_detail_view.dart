@@ -16,7 +16,7 @@ class ClassDetailView extends GetView<ClassDetailController> {
     print('Building ClassDetailView with data: $data');
 
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: Column(
         children: [
           // ========== IMAGE HEADER SECTION ==========
@@ -120,7 +120,7 @@ class ClassDetailView extends GetView<ClassDetailController> {
                 Container(
                   transform: Matrix4.translationValues(0, -30, 0),
                   decoration: BoxDecoration(
-                    color: AppColors.background,
+                    color: Theme.of(context).colorScheme.background,
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(30),
                       topRight: Radius.circular(30),
@@ -138,6 +138,7 @@ class ClassDetailView extends GetView<ClassDetailController> {
                           category: data['gender']?.toString() ?? '/',
                           date: data['date']?.toString() ?? '/',
                           time: data['time']?.toString() ?? '/',
+                          context: context,
                         ),
 
                         SizedBox(height: 24),
@@ -147,12 +148,13 @@ class ClassDetailView extends GetView<ClassDetailController> {
                           image: 'assets/image/gym1.png',
                           location: 'GymFit Malang',
                           locationDetail: 'Malang • 6km',
+                          context: context,
                         ),
 
                         SizedBox(height: 32),
 
                         // Requirements
-                        _buildRequirements(),
+                        _buildRequirements(context),
                       ],
                     ),
                   ),
@@ -166,7 +168,7 @@ class ClassDetailView extends GetView<ClassDetailController> {
                   child: Container(
                     padding: EdgeInsets.all(24),
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: Theme.of(context).cardColor,
                       borderRadius: BorderRadius.all(Radius.circular(20)),
                       border: Border.all(
                         color: Colors.black.withOpacity(0.2), 
@@ -179,10 +181,10 @@ class ClassDetailView extends GetView<ClassDetailController> {
                           height: 56,
                           width: 56,
                           decoration: BoxDecoration(
-                            color: AppColors.white,
+                            color: Theme.of(context).cardColor,
                             shape: BoxShape.circle,
                             border: Border.all(
-                              color: AppColors.black,
+                              color: Theme.of(context).colorScheme.onBackground,
                               width: 1,
                             ),
                           ),
@@ -191,11 +193,12 @@ class ClassDetailView extends GetView<ClassDetailController> {
                               'assets/icons/cart_icon.svg', // Sesuaikan path icon cart Anda
                               width: 24,
                               height: 24,
+                              color: Theme.of(context).colorScheme.onBackground,
                               errorBuilder: (context, error, stackTrace) {
                                 // Fallback jika icon tidak ada
                                 return Icon(
                                   Icons.shopping_cart_outlined,
-                                  color: Colors.black,
+                                  color: Theme.of(context).colorScheme.onBackground,
                                   size: 24,
                                 );
                               },
@@ -242,6 +245,7 @@ class ClassDetailView extends GetView<ClassDetailController> {
     required String category,
     required String date,
     required String time,
+    required BuildContext context,
   }) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24),
@@ -252,36 +256,36 @@ class ClassDetailView extends GetView<ClassDetailController> {
               children: [
                 Text(
                   'Category', 
-                  style: AppText.Body
+                  style: AppText.Body.copyWith(color: Theme.of(context).colorScheme.onBackground)
                 ),
                 SizedBox(height: 4),
                 Text(
                   category, 
-                  style: AppText.Body_bold
+                  style: AppText.Body_bold.copyWith(color: Theme.of(context).colorScheme.onBackground)
                 ),
               ],
             ),
           ),
-          Container(height: 40, width: 1, color: Color(0xFF6C6C6C).withOpacity(0.5)),
+          Container(height: 40, width: 1, color: Theme.of(context).dividerColor),
           Expanded(
             child: Column(
               children: [
                 Text(
                   'Date', 
-                  style: AppText.Body
+                  style: AppText.Body.copyWith(color: Theme.of(context).colorScheme.onBackground)
                 ),
                 SizedBox(height: 4),
-                Text(date, style: AppText.Body_bold),
+                Text(date, style: AppText.Body_bold.copyWith(color: Theme.of(context).colorScheme.onBackground)),
               ],
             ),
           ),
-          Container(height: 40, width: 1, color: Color(0xFF6C6C6C)),
+          Container(height: 40, width: 1, color: Theme.of(context).dividerColor),
           Expanded(
             child: Column(
               children: [
-                Text('Time', style: AppText.Body),
+                Text('Time', style: AppText.Body.copyWith(color: Theme.of(context).colorScheme.onBackground)),
                 SizedBox(height: 4),
-                Text(time, style: AppText.Body_bold),
+                Text(time, style: AppText.Body_bold.copyWith(color: Theme.of(context).colorScheme.onBackground)),
               ],
             ),
           ),
@@ -294,15 +298,15 @@ class ClassDetailView extends GetView<ClassDetailController> {
     required String location,
     required String locationDetail,
     String? image,
+    required BuildContext context,
   }) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(20, 16, 20, 0),
       child: Container(
         padding: EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: Theme.of(context).cardColor,
           borderRadius: BorderRadius.circular(16),
-          border: Border.all(color: Colors.grey.shade200, width: 1),
         ),
         child: Row(
           children: [
@@ -310,7 +314,7 @@ class ClassDetailView extends GetView<ClassDetailController> {
               width: 70,
               height: 70,
               decoration: BoxDecoration(
-                color: Colors.grey.shade200,
+                color: Theme.of(context).cardColor,
                 borderRadius: BorderRadius.circular(12),
               ),
               child: image != null 
@@ -322,11 +326,11 @@ class ClassDetailView extends GetView<ClassDetailController> {
                       errorBuilder: (context, error, stackTrace) {
                         print('Location image load error: $error');
                         return Container(
-                          color: Colors.grey.shade200,
+                          color: Theme.of(context).colorScheme.onTertiary,
                           child: Icon(
                             Icons.location_on_outlined,
                             size: 30,
-                            color: Colors.grey.shade600,
+                            color: Theme.of(context).colorScheme.onTertiary,
                           ),
                         );
                       },
@@ -335,7 +339,7 @@ class ClassDetailView extends GetView<ClassDetailController> {
                 : Icon(
                     Icons.location_on_outlined,
                     size: 30,
-                    color: Colors.grey.shade600,
+                    color: Theme.of(context).colorScheme.onTertiary,
                   ),
             ),
             SizedBox(width: 16),
@@ -343,20 +347,20 @@ class ClassDetailView extends GetView<ClassDetailController> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(location, style: TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold)),
+                  Text(location, style: AppText.Body_bold.copyWith(color: Theme.of(context).colorScheme.onBackground)),
                   SizedBox(height: 4),
-                  Text(locationDetail, style: TextStyle(color: Colors.grey.shade600, fontSize: 14)),
+                  Text(locationDetail, style: AppText.Body.copyWith(color: Theme.of(context).colorScheme.onTertiary)),
                 ],
               ),
             ),
-            Icon(Icons.arrow_forward_ios, color: Colors.grey.shade400, size: 18),
+            Icon(Icons.arrow_forward_ios, color: Theme.of(context).colorScheme.onBackground, size: 18),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildRequirements() {
+  Widget _buildRequirements(BuildContext context) {
     final requirements = [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -370,14 +374,13 @@ class ClassDetailView extends GetView<ClassDetailController> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('Requirements', style: AppText.Subheading_Bold),
+          Text('Requirements', style: AppText.Subheading_Bold.copyWith(color: Theme.of(context).colorScheme.onBackground)),
           SizedBox(height: 16),
           Container(
             padding: EdgeInsets.fromLTRB(26, 20, 20, 20),
             decoration: BoxDecoration(
-              color: AppColors.white,
+              color: Theme.of(context).cardColor,
               borderRadius: BorderRadius.circular(12),
-              border: Border.all(color: Colors.grey.shade200, width: 1),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -388,8 +391,8 @@ class ClassDetailView extends GetView<ClassDetailController> {
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('${entry.key + 1}. ', style: AppText.Body),
-                        Expanded(child: Text(entry.value, style: AppText.Body)),
+                        Text('${entry.key + 1}. ', style: AppText.Body.copyWith(color: Theme.of(context).colorScheme.onBackground)),
+                        Expanded(child: Text(entry.value, style: AppText.Body.copyWith(color: Theme.of(context).colorScheme.onBackground))),
                       ],
                     ),
                   );

@@ -1,4 +1,3 @@
-import 'package:fitpall/app/theme/app_colors.dart';
 import 'package:fitpall/app/theme/app_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -12,7 +11,7 @@ class NotificationView extends GetView<NotificationController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -24,14 +23,14 @@ class NotificationView extends GetView<NotificationController> {
                 children: [
                   GestureDetector(
                     onTap: () => Get.back(),
-                    child: const Icon(
+                    child: Icon(
                       Icons.arrow_back,
                       size: 24,
-                      color: Color(0xFF1A1A1A),
+                      color: Theme.of(context).colorScheme.onBackground,
                     ),
                   ),
                   const SizedBox(width: 16),
-                  Text('Notification', style: AppText.Heading2),
+                  Text('Notification', style: AppText.Heading2.copyWith(color: Theme.of(context).colorScheme.onBackground)),
                 ],
               ),
             ),
@@ -53,20 +52,20 @@ class NotificationView extends GetView<NotificationController> {
                       // Group label
                       Padding(
                         padding: const EdgeInsets.only(bottom: 16),
-                        child: Text(groupLabel, style: AppText.Subheading_Bold,),
+                        child: Text(groupLabel, style: AppText.Subheading_Bold.copyWith(color: Theme.of(context).colorScheme.onBackground)),
                       ),
 
                       // Notification card 
                       Container(
                         decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: Theme.of(context).cardColor,
                           borderRadius: BorderRadius.circular(16),
                         ),
                         child: Column(
                           children: List.generate(items.length, (index) {
                             final item = items[index];
                             final isLast = index == items.length - 1;
-                            return _buildNotificationItem(item, isLast);
+                            return _buildNotificationItem(item, isLast, context);
                           }),
                         ),
                       ),
@@ -84,7 +83,7 @@ class NotificationView extends GetView<NotificationController> {
   }
 
   // ============================== NOTIFICATION ITEM ============================== 
-  Widget _buildNotificationItem(Map<String, dynamic> item, bool isLast){
+  Widget _buildNotificationItem(Map<String, dynamic> item, bool isLast, BuildContext context){
     return Column(
       children: [
         Padding(
@@ -97,8 +96,8 @@ class NotificationView extends GetView<NotificationController> {
                 item['icon'] as String,
                 width: 24,
                 height: 27,
-                colorFilter: const ColorFilter.mode(
-                  AppColors.black,
+                colorFilter: ColorFilter.mode(
+                  Theme.of(context).colorScheme.onBackground,
                   BlendMode.srcIn,
                 ),
               ),
@@ -112,7 +111,7 @@ class NotificationView extends GetView<NotificationController> {
                   children: [
                     Text(
                       item['title'] as String,
-                      style: AppText.Body_bold
+                      style: AppText.Body_bold.copyWith(color: Theme.of(context).colorScheme.onBackground)
                     ),
 
                     const SizedBox(height: 4,),
@@ -120,7 +119,7 @@ class NotificationView extends GetView<NotificationController> {
                     Text(
                       item['message'] as String,
                       style: AppText.Body.copyWith(
-                        color: AppColors.grey,
+                        color: Theme.of(context).colorScheme.onBackground,
                       ),
                     ),
                   ],
@@ -133,7 +132,7 @@ class NotificationView extends GetView<NotificationController> {
               Text(
                 item['time'] as String,
                 style: AppText.Body.copyWith(
-                  color: AppColors.grey,
+                  color: Theme.of(context).colorScheme.onTertiary,
                 ),
               ),
             ],
@@ -142,10 +141,10 @@ class NotificationView extends GetView<NotificationController> {
 
         // Divider kecuali item terakhir
         if (!isLast)
-          const Divider(
+          Divider(
             height: 1,
             thickness: 1,
-            color: Color(0xFFF0F0F0),
+            color: Theme.of(context).dividerColor,
             indent: 16,
             endIndent: 16,
           ),

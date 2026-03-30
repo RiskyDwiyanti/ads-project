@@ -11,7 +11,7 @@ class ClassListView extends GetView<ClassListController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -24,14 +24,14 @@ class ClassListView extends GetView<ClassListController> {
                   // Back button
                   GestureDetector(
                     onTap: () => Get.back(),
-                    child: const Icon(
+                    child: Icon(
                       Icons.arrow_back,
                       size: 24,
-                      color: Color(0xFF1A1A1A),
+                      color: Theme.of(context).colorScheme.onBackground,
                     ),
                   ),
                   const SizedBox(width: 12),
-                  Text('Class list', style: AppText.Heading2),
+                  Text('Class list', style: AppText.Heading2.copyWith(color: Theme.of(context).colorScheme.onBackground)),
                 ],
               ),
             ),
@@ -41,7 +41,7 @@ class ClassListView extends GetView<ClassListController> {
             // ==================== FILTER ====================
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Obx(() => _buildFilterRow()),
+              child: Obx(() => _buildFilterRow(context)),
             ),
 
             const SizedBox(height: 20),
@@ -56,11 +56,11 @@ class ClassListView extends GetView<ClassListController> {
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Icon(Icons.fitness_center, size: 60, color: Colors.grey.shade300),
+                        Icon(Icons.fitness_center, size: 60, color: Theme.of(context).colorScheme.onTertiary),
                         const SizedBox(height: 12),
                         Text(
                           'No classes found',
-                          style: AppText.Body.copyWith(color: Colors.grey),
+                          style: AppText.Body.copyWith(color: Theme.of(context).colorScheme.onTertiary),
                         ),
                       ],
                     ),
@@ -87,7 +87,7 @@ class ClassListView extends GetView<ClassListController> {
   }
 
   // ==================== FILTER ROW ====================
-  Widget _buildFilterRow() {
+  Widget _buildFilterRow(BuildContext context) {
     return Row(
       children: controller.filters.map((filter) {
         final isSelected = controller.selectedGender.value == filter;
@@ -97,21 +97,21 @@ class ClassListView extends GetView<ClassListController> {
             onTap: () => controller.selectGender(filter),
             child: AnimatedContainer(
               duration: const Duration(milliseconds: 200),
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
               decoration: BoxDecoration(
-                color: isSelected ? const Color(0xFF0B0C4F) : Colors.white,
+                color: isSelected ? Theme.of(context).colorScheme.secondary : Theme.of(context).colorScheme.background,
                 borderRadius: BorderRadius.circular(8),
                 border: Border.all(
                   color: isSelected
-                      ? const Color(0xFF0B0C4F)
-                      : const Color(0xFFD0D0D0),
+                      ? Theme.of(context).colorScheme.secondary
+                      : AppColors.grey,
                   width: 1.5,
                 ),
               ),
               child: Text(
                 filter,
                 style: AppText.Body.copyWith(
-                  color: isSelected ? Colors.white : const Color(0xFF1A1A1A),
+                  color: isSelected ? Colors.white : Theme.of(context).colorScheme.onBackground,
                   fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
                 ),
               ),

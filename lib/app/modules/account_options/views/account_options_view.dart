@@ -1,4 +1,3 @@
-import 'package:fitpall/app/theme/app_colors.dart';
 import 'package:fitpall/app/theme/app_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -12,7 +11,7 @@ class AccountOptionsView extends GetView<AccountOptionsController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -24,14 +23,14 @@ class AccountOptionsView extends GetView<AccountOptionsController> {
                 children: [
                   GestureDetector(
                     onTap: () => Get.back(),
-                    child: const Icon(
+                    child: Icon(
                       Icons.arrow_back,
                       size: 24,
-                      color: Color(0xFF1A1A1A),
+                      color: Theme.of(context).colorScheme.onBackground,
                     ),
                   ),
                   const SizedBox(width: 16),
-                  Text('Account options', style: AppText.Heading2),
+                  Text('Account options', style: AppText.Heading2.copyWith(color: Theme.of(context).colorScheme.onBackground)),
                 ],
               ),
             ),
@@ -44,7 +43,7 @@ class AccountOptionsView extends GetView<AccountOptionsController> {
               child: Container(
                 padding: EdgeInsets.fromLTRB(8, 20, 8, 20),
                 decoration: BoxDecoration(
-                  color: AppColors.white,
+                  color: Theme.of(context).cardColor,
                   borderRadius: BorderRadius.circular(16),
                 ),
                 child: Column(
@@ -54,16 +53,17 @@ class AccountOptionsView extends GetView<AccountOptionsController> {
                       iconPath: 'assets/icons/signout_icon.svg',
                       title: 'Sign Out',
                       subtitle: 'Sign out from your current device.',
-                      onTap: controller.onSignOut,
+                      onTap: () => controller.onSignOut(context),
                       isLast: false,
+                      context: context
                     ),
 
                     const SizedBox(height: 20,),
 
-                    const Divider(
+                    Divider(
                       height: 1,
                       thickness: 1,
-                      color: Color(0xFFF0F0F0),
+                      color: Theme.of(context).dividerColor,
                       indent: 16,
                       endIndent: 16,
                     ),
@@ -77,6 +77,7 @@ class AccountOptionsView extends GetView<AccountOptionsController> {
                       subtitle: 'Find out how you can permanently delete your existed account.', 
                       onTap: controller.onAccountDeletion, 
                       isLast: true,
+                      context: context
                     )
                   ],
                 ),
@@ -94,6 +95,7 @@ class AccountOptionsView extends GetView<AccountOptionsController> {
     required String subtitle,
     required VoidCallback onTap,
     required bool isLast,
+    required BuildContext context,
   }) {
     return GestureDetector(
       onTap: onTap,
@@ -108,6 +110,7 @@ class AccountOptionsView extends GetView<AccountOptionsController> {
               iconPath,
               width: 26,
               height: 26,
+              color: Theme.of(context).colorScheme.onBackground,
             ),
 
             const SizedBox(width: 20,),
@@ -119,12 +122,12 @@ class AccountOptionsView extends GetView<AccountOptionsController> {
                 children: [
                   Text(
                     title,
-                    style: AppText.Body_bold,
+                    style: AppText.Body_bold.copyWith(color: Theme.of(context).colorScheme.onBackground),
                   ),
                   const SizedBox(height: 4,),
                   Text(
                     subtitle,
-                    style: AppText.Body,
+                    style: AppText.Body.copyWith(color: Theme.of(context).colorScheme.onBackground),
                   ),
                 ],
               ),

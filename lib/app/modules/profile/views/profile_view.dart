@@ -1,4 +1,3 @@
-import 'package:fitpall/app/theme/app_colors.dart';
 import 'package:fitpall/app/theme/app_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -12,7 +11,7 @@ class ProfileView extends GetView<ProfileController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.fromLTRB(20, 42, 20, 20),
@@ -21,39 +20,41 @@ class ProfileView extends GetView<ProfileController> {
             children: [
               Text(
                 'Profile',
-                style: AppText.Heading1,
+                style: AppText.Heading1.copyWith(
+                  color: Theme.of(context).colorScheme.onBackground,
+                ),
               ),
 
               const SizedBox(height: 20,),
 
               // ========================= USER CARD =========================
-              _buildUserCard(),
+              _buildUserCard(context),
 
               const SizedBox(height: 16),
 
               // ========================= STATS CARD =========================
-              _buildStatsCard(),
+              _buildStatsCard(context),
 
               const SizedBox(height: 28),
 
               // ========================= ACCOUNT SETTINGS =========================
-              Text('Account & Privacy', style: AppText.Heading2,),
+              Text('Account & Privacy', style: AppText.Heading2.copyWith(color: Theme.of(context).colorScheme.onBackground),),
               const SizedBox(height: 16),
-              _buildMenuCard(controller.accountMenus),
+              _buildMenuCard(controller.accountMenus, context),
 
               const SizedBox(height: 28),
 
               // ========================= PREFERENCE =========================
-              Text('Preferences', style: AppText.Heading2,),
+              Text('Preferences', style: AppText.Heading2.copyWith(color: Theme.of(context).colorScheme.onBackground),),
               const SizedBox(height: 16),
-              _buildMenuCard(controller.preferenceMenus),
+              _buildMenuCard(controller.preferenceMenus, context),
 
               const SizedBox(height: 28),
 
               // ========================= HELP CENTER =========================
-              Text('Help Center', style: AppText.Heading2,),
+              Text('Help Center', style: AppText.Heading2.copyWith(color: Theme.of(context).colorScheme.onBackground),),
               const SizedBox(height: 16),
-              _buildMenuCard(controller.helpMenus),
+              _buildMenuCard(controller.helpMenus, context),
             ],
           ),
         )
@@ -62,11 +63,11 @@ class ProfileView extends GetView<ProfileController> {
   }
 
   // ========================= USER CARD =========================
-  Widget _buildUserCard() {
+  Widget _buildUserCard(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 42, vertical: 20),
       decoration: BoxDecoration(
-        color: AppColors.white,
+        color: Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(16),
       ),
       child: Row(
@@ -77,7 +78,7 @@ class ProfileView extends GetView<ProfileController> {
             height: 70,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: AppColors.white,
+              color: Theme.of(context).cardColor,
             ),
             child: ClipOval(
               child: Obx(() => SvgPicture.asset(
@@ -103,20 +104,22 @@ class ProfileView extends GetView<ProfileController> {
               children: [
                 Obx(() => Text(
                   controller.name.value,
-                  style: AppText.Heading2,
+                  style: AppText.Heading2.copyWith(
+                    color: Theme.of(context).colorScheme.onBackground,
+                  ),
                 )),
                 const SizedBox(height: 4),
                 Obx(() => Text(
                   controller.phone.value,
                   style: AppText.Body.copyWith(
-                    color: AppColors.grey,
+                    color: Theme.of(context).colorScheme.onTertiary,
                   ),
                 )),
                 const SizedBox(height: 2),
                 Obx(() => Text(
                   controller.email.value,
                   style: AppText.Body.copyWith(
-                    color: AppColors.grey,
+                    color: Theme.of(context).colorScheme.onTertiary,
                   ),
                 )),
               ],
@@ -128,11 +131,11 @@ class ProfileView extends GetView<ProfileController> {
   }
 
   // ========================= STATS CARD =========================
-  Widget _buildStatsCard() {
+  Widget _buildStatsCard(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 22),
       decoration: BoxDecoration(
-        color: AppColors.white,
+        color: Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(16),
       ),
       child: Obx(() => Row(
@@ -145,12 +148,14 @@ class ProfileView extends GetView<ProfileController> {
                     children: [
                       TextSpan(
                         text: controller.weight.value,
-                        style: AppText.Heading2,
+                        style: AppText.Heading2.copyWith(
+                          color: Theme.of(context).colorScheme.onBackground,
+                        ),
                       ),
                       TextSpan(
                         text: ' kg',
                         style: AppText.Body.copyWith(
-                          color: AppColors.grey,
+                          color: Theme.of(context).colorScheme.onTertiary,
                         ),
                       ),
                     ],
@@ -159,7 +164,9 @@ class ProfileView extends GetView<ProfileController> {
                 const SizedBox(height: 4),
                 Text(
                   'Weight',
-                  style: AppText.Body,
+                  style: AppText.Body.copyWith(
+                    color: Theme.of(context).colorScheme.onBackground,
+                  ),
                 ),
               ],
             )
@@ -169,7 +176,7 @@ class ProfileView extends GetView<ProfileController> {
           Container(
             width: 1,
             height: 40,
-            color: AppColors.grey,
+            color: Theme.of(context).dividerColor,
           ),
 
           // Height
@@ -181,21 +188,26 @@ class ProfileView extends GetView<ProfileController> {
                     children: [
                       TextSpan(
                         text: controller.height.value,
-                        style: AppText.Heading2,
+                        style: AppText.Heading2.copyWith(
+                          color: Theme.of(context).colorScheme.onBackground,
+                        ),
                       ),
                       TextSpan(
                         text: ' cm',
                         style: AppText.Body.copyWith(
-                          color: AppColors.grey,
+                          color: Theme.of(context).colorScheme.onTertiary,
                         ),
                       ),
                     ],
                   ),
                 ),
                 const SizedBox(height: 4),
+
                 Text(
                   'Height',
-                  style: AppText.Body,
+                  style: AppText.Body.copyWith(
+                    color: Theme.of(context).colorScheme.onBackground,
+                  ),
                 ),
               ],
             )
@@ -206,10 +218,10 @@ class ProfileView extends GetView<ProfileController> {
   }
 
   // ========================= MENU CARD =========================
-  Widget _buildMenuCard(List<Map<String, dynamic>> menus) {
+  Widget _buildMenuCard(List<Map<String, dynamic>> menus, BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(16),
       ),
       child: Column(
@@ -221,6 +233,7 @@ class ProfileView extends GetView<ProfileController> {
             title: menu['title'] as String,
             subtitle: menu['subtitle'] as String,
             isLast: isLast,
+            context: context
           );
         }),
       ),
@@ -233,6 +246,7 @@ class ProfileView extends GetView<ProfileController> {
     required String title,
     required String subtitle,
     required bool isLast,
+    required BuildContext context
   }) {
     return Column(
       children: [
@@ -248,6 +262,7 @@ class ProfileView extends GetView<ProfileController> {
                   iconPath,
                   width: 24,
                   height: 24,
+                  color: Theme.of(context).colorScheme.onBackground,
                 ),
 
                 const SizedBox(width: 14),
@@ -259,14 +274,16 @@ class ProfileView extends GetView<ProfileController> {
                     children: [
                       Text(
                         title,
-                        style: AppText.Body_bold,
+                        style: AppText.Body_bold.copyWith(
+                          color: Theme.of(context).colorScheme.onBackground,
+                        ),
                       ),
                       if (subtitle.isNotEmpty) ...[
                         const SizedBox(height: 2),
                         Text(
                           subtitle,
                           style: AppText.Body.copyWith(
-                            color: AppColors.grey,
+                            color: Theme.of(context).colorScheme.onTertiary,
                           ),
                         ),
                       ],
@@ -275,9 +292,9 @@ class ProfileView extends GetView<ProfileController> {
                 ),
 
                 // Arrow Icon
-                const Icon(
+                Icon(
                   Icons.chevron_right_rounded,
-                  color: Color(0xFF1A1A1A),
+                  color: Theme.of(context).colorScheme.onBackground,
                   size: 22,
                 ),
               ],

@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 
 class AccountOptionsController extends GetxController {
 
-  void onSignOut() {
+  void onSignOut(BuildContext context) {
     showDialog(
       context: Get.context!,
       barrierColor: Colors.black.withOpacity(0.4),
@@ -20,7 +20,7 @@ class AccountOptionsController extends GetxController {
                 margin: const EdgeInsets.symmetric(horizontal: 32),
                 padding: const EdgeInsets.all(24),
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: Theme.of(context).cardColor,
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Column(
@@ -28,7 +28,7 @@ class AccountOptionsController extends GetxController {
                   children: [
                     Text(
                       'Sign out of your account?',
-                      style: AppText.Subheading_Bold
+                      style: AppText.Subheading_Bold.copyWith(color: Theme.of(context).colorScheme.onBackground)
                     ),
 
                     const SizedBox(height: 24),
@@ -51,7 +51,7 @@ class AccountOptionsController extends GetxController {
                             ),
                             child: Center(
                               child: Text(
-                                'Sign Out',
+                                'Yes, sign out',
                                 style: AppText.Subheading_Bold.copyWith(color: AppColors.white),
                               ),
                             ),
@@ -66,13 +66,13 @@ class AccountOptionsController extends GetxController {
                             width: double.infinity,
                             padding: const EdgeInsets.symmetric(vertical: 12),
                             decoration: BoxDecoration(
-                              border: Border.all(color: const Color(0xFFD0D0D0)),
+                              border: Border.all(color: Theme.of(context).colorScheme.onBackground),
                               borderRadius: BorderRadius.circular(50),
                             ),
                             child: Center(
                               child: Text(
                                 'Cancel',
-                                style: AppText.Subheading_Bold,
+                                style: AppText.Subheading_Bold.copyWith(color: Theme.of(context).colorScheme.onBackground),
                               ),
                             ),
                           ),

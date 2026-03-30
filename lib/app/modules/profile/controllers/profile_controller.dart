@@ -1,14 +1,21 @@
+import 'dart:convert';
+
 import 'package:fitpall/app/routes/app_pages.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfileController extends GetxController {
   //TODO: Implement ProfileController
-  var name = 'Jane Doe'.obs;
-  var phone = '+62-8123-4567-890'.obs;
-  var email = 'hey@mail.com'.obs;
-  var weight = '65'.obs;
-  var height = '175'.obs;
+  var name = ''.obs;
+  var phone = ''.obs;
+  var email = ''.obs;
+  var weight = ''.obs;
+  var height = ''.obs;
   var avatar = 'assets/icons/profile_icon.svg'.obs;
+
+  var isLoading = false.obs;
 
   final accountMenus = [
     {
@@ -54,6 +61,43 @@ class ProfileController extends GetxController {
     },
   ];
 
+  // Api
+  Future<void> fetchProfile() async {
+    try {
+      isLoading.value = true;
+
+      final prefs = await SharedPreferences.getInstance();
+      String token = prefs.getString('token') ?? '';
+
+      print("TOKEN: $token");
+
+      final response = await http.get(
+        Uri.parse('http://onseason-laravel.test/api/auth/profile'),
+        headers: {
+          "Accept": "application/json",
+          "Authorization": "Bearer $token",
+        },
+      ); 
+
+      print(response.body);
+
+      if (response.statusCode == 200) {
+        final jsonData = json.decode(response.body);
+        final data = jsonData['data'];
+
+        name.value = data['name'] ?? '';
+        email.value = data['email'] ?? '';
+        phone.value = data['phone'] ?? '';
+        weight.value = data['weight']?.toString() ?? '';
+        height.value = data['height']?.toString() ?? '';
+      }
+    } catch (e) {
+      print("Error fetch profile: $e");
+    } finally {
+      isLoading.value = false;
+    }
+  }
+
   void onMenuTap(String title) {
     // Handle navigasi sesuai menu
     switch (title) {
@@ -84,6 +128,7 @@ class ProfileController extends GetxController {
   @override
   void onReady() {
     super.onReady();
+    fetchProfile();
   }
 
   @override

@@ -29,8 +29,8 @@ class _LocationPickerSheetState extends State<LocationPickerSheet> {
 
     return Container(
       height: MediaQuery.of(context).size.height * 0.60,
-      decoration: const BoxDecoration(
-        color: Colors.white,
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.background,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(30),
           topRight: Radius.circular(30),
@@ -41,10 +41,10 @@ class _LocationPickerSheetState extends State<LocationPickerSheet> {
           // Handle bar
           const SizedBox(height: 12),
           Container(
-            width: 100,
-            height: 4,
+            width: 110,
+            height: 7,
             decoration: BoxDecoration(
-              color: const Color(0xFFD0D0D0),
+              color: Theme.of(context).colorScheme.onSurface.withOpacity(0.1),
               borderRadius: BorderRadius.circular(2),
             ),
           ),
@@ -55,7 +55,7 @@ class _LocationPickerSheetState extends State<LocationPickerSheet> {
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Container(
               decoration: BoxDecoration(
-                color: const Color(0xFFE6E6E6),
+                color: Theme.of(context).colorScheme.onSurface.withOpacity(0.1),
                 borderRadius: BorderRadius.circular(25),
               ),
               child: TextField(
@@ -64,7 +64,7 @@ class _LocationPickerSheetState extends State<LocationPickerSheet> {
                 decoration: InputDecoration(
                   hintText: 'Search',
                   hintStyle: AppText.Body.copyWith(
-                    color: Color(0xFF6C6C6C)
+                    color: Theme.of(context).colorScheme.onTertiary,
                   ),
                   border: InputBorder.none,
                   contentPadding: EdgeInsets.symmetric(vertical: 14, horizontal: 20),
@@ -80,7 +80,7 @@ class _LocationPickerSheetState extends State<LocationPickerSheet> {
             child: ListView.separated(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               itemCount: filteredLocations.length,
-              separatorBuilder: (_, __) => Divider(height: 2, color: Color(0xFFE6E6E6).withOpacity(0.8)),
+              separatorBuilder: (_, __) => Divider(height: 2, color: Theme.of(context).dividerColor,),
               itemBuilder: (context, index) {
                 final loc = filteredLocations[index];
                 final isSelected = widget.controller.selectedLocationId.value == loc['id'];
@@ -106,7 +106,7 @@ class _LocationPickerSheetState extends State<LocationPickerSheet> {
                             errorBuilder: (_, __, ___) => Container(
                               width: 62,
                               height: 62,
-                              color: const Color(0xFFEEEEEE),
+                              color: Theme.of(context).colorScheme.onTertiary,
                               child: const Icon(Icons.fitness_center, color: Color(0xFFAAAAAA)),
                             ),
                           ),
@@ -120,12 +120,12 @@ class _LocationPickerSheetState extends State<LocationPickerSheet> {
                             children: [
                               Text(
                                 loc['name']!,
-                                style: AppText.Body_bold),
+                                style: AppText.Body_bold.copyWith(color: Theme.of(context).colorScheme.onBackground)),
                               const SizedBox(height: 8),
                               Text(
                                 '${loc['city']}  •  ${loc['distance']}',
                                 style: AppText.Body.copyWith(
-                                  color: const Color(0xFF6C6C6C)
+                                  color: Theme.of(context).colorScheme.onTertiary,
                                 )
                               ),
                             ],
