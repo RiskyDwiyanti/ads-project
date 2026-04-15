@@ -30,7 +30,7 @@ class ChangePasswordView extends GetView<ChangePasswordController> {
                     ),
                   ),
                   const SizedBox(width: 16),
-                  Text('Change Password'.tr, style: AppText.Heading2.copyWith(color: Theme.of(context).colorScheme.onBackground)),
+                  Text("change_password".tr, style: AppText.Heading2.copyWith(color: Theme.of(context).colorScheme.onBackground)),
                 ],
               ),
             ),
@@ -50,7 +50,7 @@ class ChangePasswordView extends GetView<ChangePasswordController> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     // Current Password
-                    Text('Current password', style: AppText.Body_bold.copyWith(color: Theme.of(context).colorScheme.onBackground)),
+                    Text("current_password".tr, style: AppText.Body_bold.copyWith(color: Theme.of(context).colorScheme.onBackground)),
                     const SizedBox(height: 12,),
                     Obx(() => _buildPasswordField(
                       controller: controller.currentPasswordController,
@@ -63,11 +63,11 @@ class ChangePasswordView extends GetView<ChangePasswordController> {
                     const SizedBox(height: 20,),
 
                     // New Password
-                    Text('New password', style: AppText.Body_bold.copyWith(color: Theme.of(context).colorScheme.onBackground)),
+                    Text("new_password".tr, style: AppText.Body_bold.copyWith(color: Theme.of(context).colorScheme.onBackground)),
                     const SizedBox(height: 12,),
                     Obx(() => _buildPasswordField(
                       controller: controller.newPasswordController,
-                      hint: 'At least 6 characters',
+                      hint: "at_least_6_characters".tr,
                       isVisible: controller.isNewPasswordVisible.value,
                       onToggle: controller.toggleNewPassword,
                       context: context,
@@ -76,11 +76,11 @@ class ChangePasswordView extends GetView<ChangePasswordController> {
                     const SizedBox(height: 20,),
 
                     // Confirm Password
-                    Text('Confirm password', style: AppText.Body_bold.copyWith(color: Theme.of(context).colorScheme.onBackground)),
+                    Text("confirm_password".tr, style: AppText.Body_bold.copyWith(color: Theme.of(context).colorScheme.onBackground)),
                     const SizedBox(height: 12,),
                     Obx(() => _buildPasswordField(
                       controller: controller.confirmPasswordController,
-                      hint: 'At least 6 characters',
+                      hint: "at_least_6_characters".tr,
                       isVisible: controller.isConfirmPasswordVisible.value,
                       onToggle: controller.toggleConfirmPassword,
                       context: context,
@@ -109,7 +109,7 @@ class ChangePasswordView extends GetView<ChangePasswordController> {
                               ),
                             )
                             : Text(
-                              'Save Changes',
+                              "save_changes".tr,
                               style: AppText.Subheading_Bold.copyWith(color: AppColors.white),
                             ),
                         ),
@@ -126,12 +126,12 @@ class ChangePasswordView extends GetView<ChangePasswordController> {
                           text: TextSpan(
                             children: [
                               TextSpan(
-                                text: 'Forgot your password? ',
+                                text: "forgot_your_password?".tr,
                                 style: AppText.Body.copyWith(color: Theme.of(context).colorScheme.onBackground),
                               ),
 
                               TextSpan(
-                                text: 'Reset here',
+                                text: "reset_here".tr,
                                 style: AppText.Body_bold.copyWith(
                                   color: AppColors.primary,
                                 ),

@@ -19,12 +19,12 @@ class ProfileController extends GetxController {
   final accountMenus = [
     {
       'icon': 'assets/icons/lock_icon.svg',
-      'title': 'Change Password',
-      'subtitle': 'Change your password here',
+      'title': 'change_password',
+      'subtitle': 'change_password_desc',
     },
     {
       'icon': 'assets/icons/person_icon.svg',
-      'title': 'Account Options',
+      'title': 'account_options',
       'subtitle': '',
     },
   ];
@@ -32,30 +32,30 @@ class ProfileController extends GetxController {
   final preferenceMenus = [
     {
       'icon': 'assets/icons/language_icon.svg',
-      'title': 'Change Language',
-      'subtitle': "Pick language you'd like to use",
+      'title': 'change_language',
+      'subtitle': "change_language_desc",
     },
     {
       'icon': 'assets/icons/palete_icon.svg',
-      'title': 'Switch Theme',
-      'subtitle': "Change the app's theme",
+      'title': 'switch_theme',
+      'subtitle': "switch_theme_desc",
     },
   ];
 
   final helpMenus = [
     {
       'icon': 'assets/icons/faq_icon.svg',
-      'title': 'FAQs',
-      'subtitle': 'Explore frequently asked questions',
+      'title': 'faqs',
+      'subtitle': 'faqs_desc',
     },
     {
       'icon': 'assets/icons/feedback_icon.svg',
-      'title': 'Send Feedback',
-      'subtitle': 'Report any technical issues here',
+      'title': 'send_feedback',
+      'subtitle': 'send_feedback_desc',
     },
     {
       'icon': 'assets/icons/terms_icon.svg',
-      'title': 'Terms of Use and Privacy Policy',
+      'title': 'terms_of_use_and_privacy_policy',
       'subtitle': '',
     },
   ];
@@ -100,25 +100,25 @@ class ProfileController extends GetxController {
   void onMenuTap(String title) {
     // Handle navigasi sesuai menu
     switch (title) {
-      case 'Change Password':
+      case 'change_password':
         Get.toNamed(Routes.CHANGE_PASSWORD);
         break;
-      case 'Account Options':
+      case 'account_options':
         Get.toNamed(Routes.ACCOUNT_OPTIONS);
         break;
-      case 'Change Language':
+      case 'change_language':
         Get.toNamed(Routes.CHANGE_LANGUAGE);
         break;
-      case 'Switch Theme':
+      case 'switch_theme':
         Get.toNamed(Routes.SWITCH_THEME);
         break;
-      case 'FAQs':
+      case 'faqs':
         Get.toNamed(Routes.FAQ);
         break;
-      case 'Send Feedback':
+      case 'send_feedback':
         // Get.toNamed(Routes.FEEDBACK);
         break;
-      case 'Terms of Use and Privacy Policy':
+      case 'terms_of_use_and_privacy_policy':
         // Get.toNamed(Routes.TERMS);
         break;
     }

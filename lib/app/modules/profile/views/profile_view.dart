@@ -163,7 +163,7 @@ class ProfileView extends GetView<ProfileController> {
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  'Weight',
+                  "weight".tr,
                   style: AppText.Body.copyWith(
                     color: Theme.of(context).colorScheme.onBackground,
                   ),
@@ -204,7 +204,7 @@ class ProfileView extends GetView<ProfileController> {
                 const SizedBox(height: 4),
 
                 Text(
-                  'Height',
+                  "height".tr,
                   style: AppText.Body.copyWith(
                     color: Theme.of(context).colorScheme.onBackground,
                   ),
@@ -273,7 +273,7 @@ class ProfileView extends GetView<ProfileController> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        title,
+                        title.toString().tr,
                         style: AppText.Body_bold.copyWith(
                           color: Theme.of(context).colorScheme.onBackground,
                         ),
@@ -281,7 +281,7 @@ class ProfileView extends GetView<ProfileController> {
                       if (subtitle.isNotEmpty) ...[
                         const SizedBox(height: 2),
                         Text(
-                          subtitle,
+                          subtitle.toString().tr,
                           style: AppText.Body.copyWith(
                             color: Theme.of(context).colorScheme.onTertiary,
                           ),

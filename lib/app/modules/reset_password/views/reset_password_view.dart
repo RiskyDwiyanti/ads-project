@@ -30,7 +30,7 @@ class ResetPasswordView extends GetView<ResetPasswordController> {
                     ),
                   ),
                   const SizedBox(width: 16),
-                  Text('Reset Password', style: AppText.Heading2.copyWith(color: Theme.of(context).colorScheme.onBackground)),
+                  Text("reset_password".tr, style: AppText.Heading2.copyWith(color: Theme.of(context).colorScheme.onBackground)),
                 ],
               ),
             ),
@@ -50,11 +50,11 @@ class ResetPasswordView extends GetView<ResetPasswordController> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     // New Password
-                    Text('New password', style: AppText.Body_bold.copyWith(color: Theme.of(context).colorScheme.onBackground)),
+                    Text("new_password".tr, style: AppText.Body_bold.copyWith(color: Theme.of(context).colorScheme.onBackground)),
                     const SizedBox(height: 12,),
                     Obx(() => _buildPasswordField(
                       controller: controller.newPasswordController,
-                      hint: 'At least 6 characters',
+                      hint: "at_least_6_characters".tr,
                       isVisible: controller.isNewPasswordVisible.value,
                       onToggle: controller.toggleNewPassword,
                       context: context,
@@ -63,11 +63,11 @@ class ResetPasswordView extends GetView<ResetPasswordController> {
                     const SizedBox(height: 20,),
 
                     // Confirm Password
-                    Text('Confirm password', style: AppText.Body_bold.copyWith(color: Theme.of(context).colorScheme.onBackground)),
+                    Text("confirm_password".tr, style: AppText.Body_bold.copyWith(color: Theme.of(context).colorScheme.onBackground)),
                     const SizedBox(height: 12,),
                     Obx(() => _buildPasswordField(
                       controller: controller.confirmPasswordController,
-                      hint: 'At least 6 characters',
+                      hint: "at_least_6_characters".tr,
                       isVisible: controller.isConfirmPasswordVisible.value,
                       onToggle: controller.toggleConfirmPassword,
                       context: context,
@@ -96,7 +96,7 @@ class ResetPasswordView extends GetView<ResetPasswordController> {
                               ),
                             )
                             : Text(
-                              'Save Changes',
+                              "save_changes".tr,
                               style: AppText.Subheading_Bold.copyWith(color: AppColors.white),
                             ),
                         ),

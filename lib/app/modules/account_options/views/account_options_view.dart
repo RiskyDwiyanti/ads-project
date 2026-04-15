@@ -30,7 +30,7 @@ class AccountOptionsView extends GetView<AccountOptionsController> {
                     ),
                   ),
                   const SizedBox(width: 16),
-                  Text('Account options', style: AppText.Heading2.copyWith(color: Theme.of(context).colorScheme.onBackground)),
+                  Text("account_options".tr, style: AppText.Heading2.copyWith(color: Theme.of(context).colorScheme.onBackground)),
                 ],
               ),
             ),
@@ -51,8 +51,8 @@ class AccountOptionsView extends GetView<AccountOptionsController> {
                     // Sign Out
                     _buildMenuItem(
                       iconPath: 'assets/icons/signout_icon.svg',
-                      title: 'Sign Out',
-                      subtitle: 'Sign out from your current device.',
+                      title: 'sign_out',
+                      subtitle: 'sign_out_desc',
                       onTap: () => controller.onSignOut(context),
                       isLast: false,
                       context: context
@@ -73,8 +73,8 @@ class AccountOptionsView extends GetView<AccountOptionsController> {
                     // Account Delete
                     _buildMenuItem(
                       iconPath: 'assets/icons/trash_icon.svg',
-                      title: 'Account Deletion', 
-                      subtitle: 'Find out how you can permanently delete your existed account.', 
+                      title: 'account_deletion', 
+                      subtitle: 'account_deletion_desc', 
                       onTap: controller.onAccountDeletion, 
                       isLast: true,
                       context: context
@@ -121,12 +121,12 @@ class AccountOptionsView extends GetView<AccountOptionsController> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    title,
+                    title.toString().tr,
                     style: AppText.Body_bold.copyWith(color: Theme.of(context).colorScheme.onBackground),
                   ),
                   const SizedBox(height: 4,),
                   Text(
-                    subtitle,
+                    subtitle.toString().tr,
                     style: AppText.Body.copyWith(color: Theme.of(context).colorScheme.onBackground),
                   ),
                 ],

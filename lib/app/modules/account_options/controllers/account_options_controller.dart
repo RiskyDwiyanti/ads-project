@@ -27,7 +27,7 @@ class AccountOptionsController extends GetxController {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
-                      'Sign out of your account?',
+                      "sign_out_of_your_account?".tr,
                       style: AppText.Subheading_Bold.copyWith(color: Theme.of(context).colorScheme.onBackground)
                     ),
 
@@ -51,7 +51,7 @@ class AccountOptionsController extends GetxController {
                             ),
                             child: Center(
                               child: Text(
-                                'Yes, sign out',
+                                "yes_sign_out".tr,
                                 style: AppText.Subheading_Bold.copyWith(color: AppColors.white),
                               ),
                             ),
@@ -71,7 +71,7 @@ class AccountOptionsController extends GetxController {
                             ),
                             child: Center(
                               child: Text(
-                                'Cancel',
+                                "cancel".tr,
                                 style: AppText.Subheading_Bold.copyWith(color: Theme.of(context).colorScheme.onBackground),
                               ),
                             ),
@@ -111,8 +111,8 @@ class AccountOptionsController extends GetxController {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const Text(
-                      'Delete Account',
+                    Text(
+                      "delete_account".tr,
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w700,
@@ -120,8 +120,8 @@ class AccountOptionsController extends GetxController {
                       ),
                     ),
                     const SizedBox(height: 12),
-                    const Text(
-                      'Are you sure you want to permanently delete your account? This action cannot be undone.',
+                    Text(
+                      "delete_account_desc".tr,
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 14,
@@ -140,9 +140,9 @@ class AccountOptionsController extends GetxController {
                                 border: Border.all(color: const Color(0xFFD0D0D0)),
                                 borderRadius: BorderRadius.circular(12),
                               ),
-                              child: const Center(
+                              child: Center(
                                 child: Text(
-                                  'Cancel',
+                                  "cancel".tr,
                                   style: TextStyle(
                                     fontSize: 14,
                                     fontWeight: FontWeight.w600,
@@ -167,9 +167,9 @@ class AccountOptionsController extends GetxController {
                                 color: Colors.red,
                                 borderRadius: BorderRadius.circular(12),
                               ),
-                              child: const Center(
+                              child: Center(
                                 child: Text(
-                                  'Delete',
+                                  "delete".tr,
                                   style: TextStyle(
                                     fontSize: 14,
                                     fontWeight: FontWeight.w600,

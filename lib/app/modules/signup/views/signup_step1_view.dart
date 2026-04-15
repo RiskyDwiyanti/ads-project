@@ -5,6 +5,7 @@ import 'package:fitpall/app/theme/app_colors.dart';
 import 'package:fitpall/app/theme/app_text.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -16,9 +17,9 @@ class SignUpStep1View extends GetView<SignupController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
-        backgroundColor: AppColors.background,
+        backgroundColor: Theme.of(context).colorScheme.background,
         toolbarHeight: 120,
         title: Text(
           'Sign Up', 
@@ -43,20 +44,20 @@ class SignUpStep1View extends GetView<SignupController> {
             Positioned(
               top: 100,
               left: 0,
-              child: Image.asset(
-                'assets/image/Shape (1).png',
+              child: SvgPicture.asset(
+                'assets/image/Shape.svg',
                 width: 290,
-                opacity: const AlwaysStoppedAnimation(1.0),
+                color: Theme.of(context).colorScheme.secondary,
               )
             ),
 
             Positioned(
               bottom: 20,
               right: 0,
-              child: Image.asset(
-                'assets/image/Shape.png',
+              child: SvgPicture.asset(
+                'assets/image/Shape (1).svg',
                 width: 250,
-                opacity: const AlwaysStoppedAnimation(1.0),
+                color: Theme.of(context).colorScheme.secondary,
               )
             ),
 
@@ -71,12 +72,12 @@ class SignUpStep1View extends GetView<SignupController> {
 
                     Text(
                       'Hey there!',
-                      style: AppText.Heading1,
+                      style: AppText.Heading1.copyWith(color: Theme.of(context).colorScheme.onBackground),
                     ),
                     const SizedBox(height: 16),
                     Text(
                       'Welcome to Juliete!',
-                      style: AppText.Subheading,
+                      style: AppText.Subheading.copyWith(color: Theme.of(context).colorScheme.onBackground),
                     ),
                     
                     const SizedBox(height: 16,),

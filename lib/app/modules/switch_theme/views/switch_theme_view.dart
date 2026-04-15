@@ -13,17 +13,17 @@ class SwitchThemeView extends GetView<SwitchThemeController> {
     final themes = [
       {
         'value': 'light',
-        'label': 'Light',
+        'label': 'light',
         'icon': 'assets/icons/sun_icon.svg',
       },
       {
         'value': 'dark',
-        'label': 'Dark',
+        'label': 'dark',
         'icon': 'assets/icons/moon_icon.svg',
       },
       {
         'value': 'system',
-        'label': 'System default',
+        'label': 'system',
         'icon': 'assets/icons/palete_icon.svg',
       },
     ];
@@ -131,7 +131,7 @@ class SwitchThemeView extends GetView<SwitchThemeController> {
             // label
             Expanded(
               child: Text(
-                label,
+                label.toString().tr,
                 style: AppText.Body_bold.copyWith(
                   color: Theme.of(context).colorScheme.onBackground,
                 ),

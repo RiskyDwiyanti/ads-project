@@ -13,6 +13,8 @@ void main() async {
   await Hive.initFlutter();
   await Hive.openBox('signupBox');
   await AppTranslations.loadTranslations();
+
+  print("TRANSLATIONS: ${AppTranslations.translations}");
   await GetStorage.init();
 
   // set status bar transparan
@@ -32,7 +34,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final box = GetStorage();
-    final savedTheme = box.read<String>('app_theme' ?? 'light');
+    final savedTheme = box.read<String>('app_theme') ?? 'light';
 
     ThemeMode themeMode;
 

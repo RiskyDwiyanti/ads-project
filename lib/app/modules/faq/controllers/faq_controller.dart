@@ -6,15 +6,15 @@ class FaqController extends GetxController {
 
   final faqs = [
     {
-      'question': 'How do I change my password?',
+      'question': 'question1',
       'answer': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     },
     {
-      'question': 'Can I cancel a class that I have already booked?',
+      'question': 'question2',
       'answer': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     },
     {
-      'question': 'How do I delete my account?',
+      'question': 'question3',
       'answer': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     },
   ];

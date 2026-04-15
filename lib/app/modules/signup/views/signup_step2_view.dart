@@ -5,6 +5,7 @@ import 'package:fitpall/app/theme/app_colors.dart';
 import 'package:fitpall/app/theme/app_text.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -43,20 +44,20 @@ class SignUpStep2View extends GetView<SignupController> {
             Positioned(
               top: 100,
               left: 0,
-              child: Image.asset(
-                'assets/image/Shape (1).png',
-                width: 250,
-                opacity: const AlwaysStoppedAnimation(1.0),
+              child: SvgPicture.asset(
+                'assets/image/Shape.svg',
+                width: 290,
+                color: Theme.of(context).colorScheme.secondary,
               )
             ),
 
             Positioned(
               bottom: 20,
               right: 0,
-              child: Image.asset(
-                'assets/image/Shape.png',
+              child: SvgPicture.asset(
+                'assets/image/Shape (1).svg',
                 width: 250,
-                opacity: const AlwaysStoppedAnimation(1.0),
+                color: Theme.of(context).colorScheme.secondary,
               )
             ),
 
