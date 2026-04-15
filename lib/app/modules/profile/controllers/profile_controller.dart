@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:fitpall/app/routes/app_pages.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -108,7 +107,7 @@ class ProfileController extends GetxController {
         Get.toNamed(Routes.ACCOUNT_OPTIONS);
         break;
       case 'Change Language':
-        // Get.toNamed(Routes.LANGUAGE);
+        Get.toNamed(Routes.CHANGE_LANGUAGE);
         break;
       case 'Switch Theme':
         Get.toNamed(Routes.SWITCH_THEME);
@@ -126,9 +125,14 @@ class ProfileController extends GetxController {
   }
 
   @override
+  void onInit() {
+    super.onInit();
+    fetchProfile();
+  }
+
+  @override
   void onReady() {
     super.onReady();
-    fetchProfile();
   }
 
   @override

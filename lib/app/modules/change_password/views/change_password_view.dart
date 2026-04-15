@@ -30,7 +30,7 @@ class ChangePasswordView extends GetView<ChangePasswordController> {
                     ),
                   ),
                   const SizedBox(width: 16),
-                  Text('Change Password', style: AppText.Heading2.copyWith(color: Theme.of(context).colorScheme.onBackground)),
+                  Text('Change Password'.tr, style: AppText.Heading2.copyWith(color: Theme.of(context).colorScheme.onBackground)),
                 ],
               ),
             ),

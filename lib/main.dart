@@ -1,4 +1,5 @@
 import 'package:fitpall/app/theme/theme.dart';
+import 'package:fitpall/app/translations/app_translations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -11,6 +12,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
   await Hive.openBox('signupBox');
+  await AppTranslations.loadTranslations();
   await GetStorage.init();
 
   // set status bar transparan
@@ -51,6 +53,9 @@ class MyApp extends StatelessWidget {
       theme: AppTheme.light,
       darkTheme: AppTheme.dark,
       themeMode: themeMode,
+      translations: AppTranslations(),
+      locale: const Locale('en', 'US'),
+      fallbackLocale: const Locale('en', 'US'),
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
     );

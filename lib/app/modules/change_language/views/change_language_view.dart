@@ -1,0 +1,148 @@
+import 'package:fitpall/app/theme/app_text.dart';
+import 'package:flutter/material.dart';
+
+import 'package:get/get.dart';
+
+import '../controllers/change_language_controller.dart';
+
+class ChangeLanguageView extends GetView<ChangeLanguageController> {
+  const ChangeLanguageView({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.background,
+      body: SafeArea(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // ========================== HEADER ========================== 
+            Padding(
+              padding: const EdgeInsets.fromLTRB(20, 62, 20, 20),
+              child: Row(
+                children: [
+                  GestureDetector(
+                    onTap: () => Get.back(),
+                    child: Icon(
+                      Icons.arrow_back,
+                      size: 24,
+                      color: Theme.of(context).colorScheme.onBackground,
+                    ),
+                  ),
+                  const SizedBox(width: 16),
+                  Text("change_language".tr, style: AppText.Heading2.copyWith(color: Theme.of(context).colorScheme.onBackground)),
+                ],
+              ),
+            ),
+
+            const SizedBox(height: 20,),
+
+            // ========================== LANGUAGE LIST ========================== 
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Theme.of(context).cardColor,
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                child: Obx(() => Column(
+                  children: List.generate(
+                    controller.languages.length,
+                    (index) {
+                      final lang = controller.languages[index];
+                      final isSelected = controller.selectedLanguage.value == lang['code'];
+                      final isLast = index == controller.languages.length - 1;
+
+                      return Column(
+                        children: [
+                          _buildLanguageItem(
+                            flag: lang['flag'] as String,
+                            label: lang['label'] as String,
+                            isSelected: isSelected,
+                            onTap: () => controller.selectLanguage(
+                              lang['code'] as String, 
+                              lang['locale'] as Locale,
+                            ),
+                            context: context,
+                          ),
+                          if (!isLast)
+                            Divider(
+                              height: 1,
+                              thickness: 1,
+                              color: Theme.of(context).dividerColor,
+                              indent: 16,
+                              endIndent: 16,
+                            ),
+                        ],
+                      );
+                    }, 
+                  ),
+                )),
+              ), 
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  // ========================== LANGUAGE ITEM ========================== 
+  Widget _buildLanguageItem({
+    required String flag,
+    required String label,
+    required bool isSelected,
+    required VoidCallback onTap,
+    required BuildContext context,
+  }) {
+    return GestureDetector(
+      onTap: onTap,
+      behavior: HitTestBehavior.opaque,
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        child: Row(
+          children: [
+            // Flag
+            Container(
+              width: 36,
+              height: 36,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+              ),
+              child: Center(
+                child: Text(
+                  flag,
+                  style: TextStyle(fontSize: 20),
+                ),
+              ),
+            ),
+
+            const SizedBox(width: 14),
+
+            //label
+            Expanded(
+              child: Text(
+                label,
+                style: AppText.Body_bold.copyWith(color: Theme.of(context).colorScheme.onBackground),
+              ),
+            ),
+
+            // Checkmark
+            if (isSelected)
+              Container(
+                width: 22,
+                height: 22,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color:Theme.of(context).colorScheme.primary,
+                ),
+                child: Icon(
+                  Icons.check,
+                  color: Theme.of(context).colorScheme.onPrimary,
+                  size: 16,
+                ),
+              )
+          ],
+        ),
+      ),
+    );
+  }
+}

@@ -22,6 +22,8 @@ abstract class Routes {
   static const RESET_PASSWORD = _Paths.RESET_PASSWORD;
   static const ACCOUNT_OPTIONS = _Paths.ACCOUNT_OPTIONS;
   static const SWITCH_THEME = _Paths.SWITCH_THEME;
+  static const LANGUAGE = _Paths.LANGUAGE;
+  static const CHANGE_LANGUAGE = _Paths.CHANGE_LANGUAGE;
 }
 
 abstract class _Paths {
@@ -45,4 +47,6 @@ abstract class _Paths {
   static const RESET_PASSWORD = '/reset-password';
   static const ACCOUNT_OPTIONS = '/account-options';
   static const SWITCH_THEME = '/switch-theme';
+  static const LANGUAGE = '/language';
+  static const CHANGE_LANGUAGE = '/change-language';
 }

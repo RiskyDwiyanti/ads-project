@@ -19,7 +19,7 @@ class ProfileView extends GetView<ProfileController> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Profile',
+                "profile".tr,
                 style: AppText.Heading1.copyWith(
                   color: Theme.of(context).colorScheme.onBackground,
                 ),
@@ -38,21 +38,21 @@ class ProfileView extends GetView<ProfileController> {
               const SizedBox(height: 28),
 
               // ========================= ACCOUNT SETTINGS =========================
-              Text('Account & Privacy', style: AppText.Heading2.copyWith(color: Theme.of(context).colorScheme.onBackground),),
+              Text("accounts_privacy".tr, style: AppText.Heading2.copyWith(color: Theme.of(context).colorScheme.onBackground),),
               const SizedBox(height: 16),
               _buildMenuCard(controller.accountMenus, context),
 
               const SizedBox(height: 28),
 
               // ========================= PREFERENCE =========================
-              Text('Preferences', style: AppText.Heading2.copyWith(color: Theme.of(context).colorScheme.onBackground),),
+              Text("preferences".tr, style: AppText.Heading2.copyWith(color: Theme.of(context).colorScheme.onBackground),),
               const SizedBox(height: 16),
               _buildMenuCard(controller.preferenceMenus, context),
 
               const SizedBox(height: 28),
 
               // ========================= HELP CENTER =========================
-              Text('Help Center', style: AppText.Heading2.copyWith(color: Theme.of(context).colorScheme.onBackground),),
+              Text("help_center".tr, style: AppText.Heading2.copyWith(color: Theme.of(context).colorScheme.onBackground),),
               const SizedBox(height: 16),
               _buildMenuCard(controller.helpMenus, context),
             ],
