@@ -42,5 +42,6 @@
     "system": "System Default",
     "question1": "How do I change my password?",
     "question2": "Can I cancel a class that I have already booked?",
-    "question3": "How do I delete my account?"
+    "question3": "How do I delete my account?",
+    "transaction": "Transaction"
 }

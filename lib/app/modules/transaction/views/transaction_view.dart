@@ -21,7 +21,7 @@ class TransactionView extends GetView<TransactionController> {
             Padding(
               padding: const EdgeInsets.fromLTRB(20, 52, 20, 20),
               child: Text(
-                'Transaction',
+                "transaction".tr,
                 style: AppText.Heading1.copyWith(
                   color: Theme.of(context).colorScheme.onBackground,
                 ),

@@ -30,7 +30,7 @@ class FaqView extends GetView<FaqController> {
                     ),
                   ),
                   const SizedBox(width: 16),
-                  Text("faq".tr, style: AppText.Heading2.copyWith(color: Theme.of(context).colorScheme.onBackground)),
+                  Text("faqs".tr, style: AppText.Heading2.copyWith(color: Theme.of(context).colorScheme.onBackground)),
                   const Spacer(),
                 ],
               ),
