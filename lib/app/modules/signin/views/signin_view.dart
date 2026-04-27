@@ -122,18 +122,27 @@ class SigninView extends GetView<SigninController> {
                               SizedBox(
                                 width: double.infinity,
                                 height: 46,
-                                child: ElevatedButton(
+                                child: Obx(() => ElevatedButton(
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: AppColors.primary,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(24)
                                     ),
                                   ),
-                                  onPressed: controller.login,
-                                  child: Text('Sign In',
-                                    style: AppText.Subheading_Bold2,
-                                  ),
-                                ),
+                                  onPressed: controller.isLoading.value ? null : controller.login,
+                                  child: controller.isLoading.value
+                                    ? const SizedBox(
+                                      width: 24,
+                                      height: 24,
+                                      child: CircularProgressIndicator(
+                                        color: Colors.white,
+                                        strokeWidth: 2,
+                                      ),
+                                    )
+                                    : Text('Sign In',
+                                      style: AppText.Subheading_Bold2,
+                                    ),
+                                ))
                               ),
 
                               const SizedBox(height: 32),
