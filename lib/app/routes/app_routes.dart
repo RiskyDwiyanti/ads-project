@@ -3,20 +3,19 @@ part of 'app_pages.dart';
 
 abstract class Routes {
   Routes._();
-  static const HOME = _Paths.HOME;
+  static const HOME = _Paths.ATHLETE + _Paths.HOME;
   static const SPLASH = _Paths.SPLASH;
   static const ONBOARDING = _Paths.ONBOARDING;
-  static const REGISTER = _Paths.REGISTER;
   static const SIGNUP_STEP1 = _Paths.SIGNUP_STEP1;
   static const SIGNUP_STEP2 = _Paths.SIGNUP_STEP2;
   static const SIGNIN = _Paths.SIGNIN;
-  static const MAIN = _Paths.MAIN;
-  static const TRANSACTION = _Paths.TRANSACTION;
-  static const PROFILE = _Paths.PROFILE;
-  static const CLASS_DETAIL = _Paths.CLASS_DETAIL;
-  static const CLASS_LIST = _Paths.CLASS_LIST;
-  static const NOTIFICATION = _Paths.NOTIFICATION;
-  static const CART = _Paths.CART;
+  static const MAIN = _Paths.ATHLETE + _Paths.MAIN;
+  static const TRANSACTION = _Paths.ATHLETE + _Paths.TRANSACTION;
+  static const PROFILE = _Paths.ATHLETE + _Paths.PROFILE;
+  static const CLASS_DETAIL = _Paths.ATHLETE + _Paths.CLASS_DETAIL;
+  static const CLASS_LIST = _Paths.ATHLETE + _Paths.CLASS_LIST;
+  static const NOTIFICATION = _Paths.ATHLETE + _Paths.NOTIFICATION;
+  static const CART = _Paths.ATHLETE + _Paths.CART;
   static const FAQ = _Paths.FAQ;
   static const CHANGE_PASSWORD = _Paths.CHANGE_PASSWORD;
   static const RESET_PASSWORD = _Paths.RESET_PASSWORD;
@@ -24,14 +23,19 @@ abstract class Routes {
   static const SWITCH_THEME = _Paths.SWITCH_THEME;
   static const LANGUAGE = _Paths.LANGUAGE;
   static const CHANGE_LANGUAGE = _Paths.CHANGE_LANGUAGE;
+  static const SCORING1 = _Paths.SCORING1;
+  static const HOME_JUDGE = _Paths.JUDGE + _Paths.HOME_JUDGE;
+  static const SCORING = _Paths.JUDGE + _Paths.SCORING;
+  static const PROFILE_JUDGE = _Paths.JUDGE + _Paths.PROFILE_JUDGE;
 }
 
 abstract class _Paths {
   _Paths._();
+  static const JUDGE = '/judge';
+  static const ATHLETE = '/athlete';
   static const HOME = '/home';
   static const SPLASH = '/splash';
   static const ONBOARDING = '/onboarding';
-  static const REGISTER = '/register';
   static const SIGNUP_STEP1 = '/signup-step1';
   static const SIGNUP_STEP2 = '/signup-step2';
   static const SIGNIN = '/signin';
@@ -49,4 +53,8 @@ abstract class _Paths {
   static const SWITCH_THEME = '/switch-theme';
   static const LANGUAGE = '/language';
   static const CHANGE_LANGUAGE = '/change-language';
+  static const SCORING1 = '/scoring1';
+  static const HOME_JUDGE = '/home';
+  static const SCORING = '/scoring';
+  static const PROFILE_JUDGE = '/profile';
 }
